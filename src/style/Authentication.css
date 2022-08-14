@@ -1,0 +1,248 @@
+body {
+  background-color: #FAFAFA;
+}
+
+.mainContainer {
+  height: 100vh;
+  width: 250px;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mainContainer .leftContainer {
+  margin-right: 40px;
+}
+
+.mainContainer .leftContainer .background {
+  position: relative;
+}
+
+.mainContainer .leftContainer .loginImg {
+  position: absolute;
+  left: 210px;
+  bottom: 110px;
+  opacity: 0;
+}
+
+.mainContainer .leftContainer #login1 {
+  -webkit-animation-name: login;
+          animation-name: login;
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes login {
+  0% {
+    -webkit-animation-play-state: running;
+            animation-play-state: running;
+    opacity: 1;
+  }
+  25% {
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+    opacity: 0;
+  }
+  75% {
+  }
+  100% {
+  }
+}
+
+@keyframes login {
+  0% {
+    -webkit-animation-play-state: running;
+            animation-play-state: running;
+    opacity: 1;
+  }
+  25% {
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+    opacity: 0;
+  }
+  75% {
+  }
+  100% {
+  }
+}
+
+.mainContainer .leftContainer #login2 {
+  -webkit-animation-name: login;
+          animation-name: login;
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+@keyframes login {
+  25% {
+    -webkit-animation-play-state: running;
+            animation-play-state: running;
+    opacity: 1;
+  }
+  50% {
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+    opacity: 0;
+  }
+  100% {
+  }
+}
+
+.mainContainer .leftContainer #login3 {
+  -webkit-animation-name: login;
+          animation-name: login;
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+@keyframes login {
+  50% {
+    -webkit-animation-play-state: running;
+            animation-play-state: running;
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+  }
+  100% {
+  }
+}
+
+.mainContainer .rightContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.mainContainer .rightContainer .form {
+  padding: 40px 70px;
+  border: 1px solid #dbdbdb;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.mainContainer .rightContainer .form .emailLabel {
+  position: relative;
+  color: #8E8E8E;
+  font-size: 10px;
+  top: 15px;
+  right: 35px;
+  background-color: #FAFAFA;
+}
+
+.mainContainer .rightContainer .form .passwordLabel {
+  position: relative;
+  color: #8E8E8E;
+  font-size: 10px;
+  top: 15px;
+  right: 60px;
+  background-color: #FAFAFA;
+}
+
+.mainContainer .rightContainer .form input {
+  padding: 14px 0 2px 8px;
+  width: 100%;
+  background-color: #FAFAFA;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.mainContainer .rightContainer .form .changeInputType {
+  position: relative;
+  bottom: 27px;
+  left: 65px;
+  font-weight: 600;
+  background-color: #FAFAFA;
+  border: none;
+}
+
+.mainContainer .rightContainer .form .logIn {
+  margin-top: 10px;
+  background-color: #0095f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 7px 70px;
+  font-weight: bolder;
+}
+
+.mainContainer .rightContainer .signUp {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 20px;
+  border: 1px solid #dbdbdb;
+  background-color: #FFFFFF;
+  padding: 20px 60px;
+}
+
+.mainContainer .rightContainer .signUp .singUpButton {
+  background-color: #FFFFFF;
+  border: none;
+  color: #0095f6;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@-webkit-keyframes expample {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes expample {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=Authentication.css.map */

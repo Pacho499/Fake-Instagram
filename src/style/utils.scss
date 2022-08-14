@@ -1,0 +1,63 @@
+@mixin login-animation1{
+    animation-name:login;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+
+    @keyframes login{
+        0%{
+            animation-play-state: running;
+            opacity: 1;
+        }
+        25%{
+            animation-play-state: paused;
+            opacity: 0;
+        }
+        75%{
+
+        }
+        100%{
+
+        }
+    }
+}
+
+@mixin login-animation2{
+    animation-name:login;
+    animation-duration: 6s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+
+    @keyframes login{
+        25%{
+            animation-play-state: running;
+            opacity: 1;
+        }
+        50%{
+            animation-play-state: paused;
+            opacity: 0;
+        }
+        100%{
+
+        }
+    }
+}
+@mixin login-animation3{
+    animation-name:login;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+
+    @keyframes login{
+        50%{
+            animation-play-state: running;
+            opacity: 1;
+        }
+        75%{
+           opacity: 0;
+           animation-play-state: paused;
+        }
+        100%{
+
+        }
+    }
+}
+
