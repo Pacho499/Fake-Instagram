@@ -33,28 +33,7 @@ body{
             border: 1px solid $borderColor;
             background-color: $backgroundSecondaryColor;
             text-align: center;
-            .emailLabel{
-                position: relative;
-                color: $textColor;
-                font-size: 10px;
-                top: 15px;
-                right: 30px;
-                background-color: $backgroundPrimaryColor;
-            }
-            .passwordLabel{
-                position: relative;
-                color: $textColor;
-                font-size: 10px;
-                top: 15px;
-                right: 105px;
-                background-color: $backgroundPrimaryColor;
-            }
             input{
-                padding: 14px 0 2px 8px;
-                width: 270px;
-                background-color: $backgroundPrimaryColor;
-                border: 1px solid $borderColor;
-                border-radius: 2px;
                 &:focus{
                     outline: 1px solid $textColor
                 }
@@ -80,7 +59,7 @@ body{
             border: 1px solid $borderColor;
             background-color: $backgroundSecondaryColor;
             padding: 20px 102px;
-            width: 450px;
+            width: 415px;
             .singUpButton{
                 background-color: $backgroundSecondaryColor;
                 border: none;

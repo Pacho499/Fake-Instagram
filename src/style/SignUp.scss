@@ -18,46 +18,9 @@
             padding: 20px 0px;
         }
         input{
-            padding: 14px 0 2px 8px;
-            width: 270px;
-            background-color: $backgroundPrimaryColor;
-            border: 1px solid $borderColor;
-            border-radius: 2px;
             &:focus{
                 outline: 1px solid $textColor
             }
-        }
-        .emailLabel{
-            position: relative;
-            color: $textColor;
-            font-size: 10px;
-            top: 15px;
-            right: 60px;
-            background-color: $backgroundPrimaryColor;
-        }
-        .passwordLabel{
-            position: relative;
-            color: $textColor;
-            font-size: 10px;
-            top: 15px;
-            right: 105px;
-            background-color: $backgroundPrimaryColor;
-        }
-        .userNameLabel{
-            position: relative;
-            color: $textColor;
-            font-size: 10px;
-            top: 15px;
-            right: 95px;
-            background-color: $backgroundPrimaryColor;
-        }
-        .nameLabel{
-            position: relative;
-            color: $textColor;
-            font-size: 10px;
-            top: 15px;
-            right: 85px;
-            background-color: $backgroundPrimaryColor;
         }
         p{
             font-size: 12px;

@@ -1,8 +1,16 @@
-const Input = ({handleChange,value,type,autoComplete,className,text}) => {
+const Input = ({style,handleChange,value,type,autoComplete}) => {
+    const inputStyle = {
+        padding: "14px 0 2px 8px",
+        width: "270px",
+        backgroundColor: "#FAFAFA",
+        border: "1px solid #DBDBDB",
+        borderRadius:"2px",
+        ...style,
+    }
     return(
         <div>
-            <label className={className}>{text}</label>
-            <input 
+            <input
+                style={inputStyle} 
                 autoComplete={autoComplete} 
                 onChange={handleChange} 
                 value={value} 

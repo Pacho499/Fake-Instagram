@@ -3,6 +3,7 @@ import{useState} from 'react'
 import logo from "../images/instagram-logo.png"
 import background from "../images/Background-login.png"
 import MyInput from "../components/MyInput"
+import MyLabel from "../components/MyLabel"
 import {Link} from "react-router-dom"
 const Auth = () => {
     //bisgona animare il login
@@ -33,23 +34,21 @@ const Auth = () => {
                     <img src={logo} alt="" height="51px" width="175px"  />
                     <form action="">
                         <div>
+                            <MyLabel style={{right:"30px"}} text="Numero di telefono,nome utente o e-mail"/>
                             <MyInput 
-                                text="Numero di telefono,nome utente o e-mail"
                                 autoComplete="username" 
                                 handleChange={handleEmail} 
                                 value={email}
                                 type="text"
-                                className="emailLabel"
                             />
                         </div>
                         <div>
+                            <MyLabel style={{right:"105px"}} text="Password"/>
                             <MyInput
-                                text="password"
                                 autoComplete="password"
                                 handleChange={handlePassword}
                                 value={password}
                                 type="password"
-                                className="passwordLabel"
                             />
                             <button className="changeInputType">Mostra</button>
                         </div>
