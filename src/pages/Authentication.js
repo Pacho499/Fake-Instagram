@@ -1,20 +1,29 @@
 import "../style/Authentication.scss"
+import{useState} from 'react'
 import logo from "../images/instagram-logo.png"
 import background from "../images/Background-login.png"
-import login1 from "../images/login-1.png"
-import login2 from "../images/login-2.png"
-import login3 from "../images/login-3.png"
-import login4 from "../images/login-4.png"
+import MyInput from "../components/MyInput"
+import {Link} from "react-router-dom"
 const Auth = () => {
-    
+    //bisgona animare il login
+    const [password,setPassword] = useState("")
+    const [email,setEmail] = useState("")
+
+    const handlePassword = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const handleEmail = (e) => {
+        setEmail(e.target.value)
+    }
+
+
+
     return (
         <div className="mainContainer">
             <div className="leftContainer">
-                <img className="background" src={background} alt="" height="580px" />
+                <img className="background" src={background} alt="logo" height="580px" />
                 <div className="Slide">
-                    <img id="login1" className="loginImg" src={login1} alt="" height="500px" />
-                    <img id="login2" className="loginImg" src={login2} alt="" height="500px" />
-                    <img id="login3" className="loginImg" src={login3} alt="" height="500px" />
                     
                 </div>
                 
@@ -24,19 +33,38 @@ const Auth = () => {
                     <img src={logo} alt="" height="51px" width="175px"  />
                     <form action="">
                         <div>
-                            <label className="emailLabel">Nome utente, e-mail</label>
-                            <input type="text"/>
+                            <MyInput 
+                                text="Numero di telefono,nome utente o e-mail"
+                                autoComplete="username" 
+                                handleChange={handleEmail} 
+                                value={email}
+                                type="text"
+                                className="emailLabel"
+                            />
                         </div>
                         <div>
-                            <label className="passwordLabel">Password</label>
-                            <input type="password"/>
+                            <MyInput
+                                text="password"
+                                autoComplete="password"
+                                handleChange={handlePassword}
+                                value={password}
+                                type="password"
+                                className="passwordLabel"
+                            />
                             <button className="changeInputType">Mostra</button>
                         </div>
                         <button className="logIn">Accedi</button>
                     </form>
                 </div> 
                 <div className="signUp">
-                    <p>Non hai un account? <button className="singUpButton">Iscriviti</button></p>
+                    <p>Non hai un account? 
+                        <Link to="/Signup">
+                            <button 
+                                className="singUpButton">Iscriviti
+                            </button>
+                        </Link>
+                        
+                    </p>
                 </div> 
             </div>
             

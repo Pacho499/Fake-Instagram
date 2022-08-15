@@ -1,63 +1,33 @@
-@mixin login-animation1{
-    animation-name:login;
-    animation-duration: 6s;
-    animation-iteration-count: infinite;
+//color
+$backgroundPrimaryColor: #FAFAFA;
+$backgroundSecondaryColor: #FFFFFF;
+$borderColor:#DBDBDB;
+$offButtonColor: #c0dffd;
+$onButtonColor: #0095f6;
+$textColor:#8E8E8E;
 
-    @keyframes login{
-        0%{
-            animation-play-state: running;
-            opacity: 1;
-        }
-        25%{
-            animation-play-state: paused;
-            opacity: 0;
-        }
-        75%{
-
-        }
-        100%{
-
-        }
-    }
+//DisplayFlex
+@mixin flexColumn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-@mixin login-animation2{
-    animation-name:login;
-    animation-duration: 6s;
-    animation-delay: 2s;
-    animation-iteration-count: infinite;
-
-    @keyframes login{
-        25%{
-            animation-play-state: running;
-            opacity: 1;
-        }
-        50%{
-            animation-play-state: paused;
-            opacity: 0;
-        }
-        100%{
-
-        }
-    }
+@mixin flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-@mixin login-animation3{
-    animation-name:login;
-    animation-duration: 6s;
-    animation-iteration-count: infinite;
 
-    @keyframes login{
-        50%{
-            animation-play-state: running;
-            opacity: 1;
-        }
-        75%{
-           opacity: 0;
-           animation-play-state: paused;
-        }
-        100%{
-
-        }
-    }
+//button
+@mixin buttonAuth{
+    margin-top: 10px;
+    background-color: $offButtonColor;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 7px 70px;
+    font-weight: bolder;
 }
 
