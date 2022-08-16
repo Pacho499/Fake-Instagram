@@ -12,12 +12,12 @@ const initialState = {
 
 const reducer = (state = initialState,action) => {
     switch(action.type){
-        case(actionTypes).AUTH_START:
+        case(actionTypes).SIGN_UP_START:
             return{
                 ...state,
                 loading:true
             }
-        case(actionTypes).AUTH_SUCCESS:
+        case(actionTypes).SIGN_UP_SUCCESS:
             return{
                 ...state,
                 loading:false,
@@ -29,11 +29,30 @@ const reducer = (state = initialState,action) => {
                 username:action.username,
 
             }
-        case(actionTypes).AUTH_FAIL:
+        case(actionTypes).SIGN_UP_FAIL:
             return{
                 ...state,
                 loading:false,
-                error:true
+                error:action.error
+            }
+        case(actionTypes).LOG_IN_START:
+            return{
+                ...state,
+                loading:true,
+            }
+        case(actionTypes).LOG_IN_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                error:false,
+                email:action.email,
+                token:action.token,
+            }
+        case(actionTypes).LOG_IN_FAIL:
+            return{
+                ...state,
+                loading:false,
+                error:action.error
             }
 
         default :

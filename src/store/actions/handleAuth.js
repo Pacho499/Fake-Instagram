@@ -1,39 +1,43 @@
 import Axios from "axios"
-const AUTH_START = "AUTH_START"
-const AUTH_SUCCESS = "AUTH_SUCCESS"
-const AUTH_FAIL = "AUTH_FAIL"
+const SIGN_UP_START = "SIGN_UP_START"
+const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS"
+const SIGN_UP_FAIL = "SIGN_UP_FAIL"
+const LOG_IN_START = "LOG_IN_START"
+const LOG_IN_SUCCESS = "LOG_IN_SUCCESS"
+const LOG_IN_FAIL = "LOG_IN_FAIL"
 
-export const auth = (email,password,name,userName) => {
+
+const key = "AIzaSyA4yAH6jdEqymDwGXbDN5z_YxJDmUgpaiA"
+export const signUp = (email,password,name,userName) => {
     
     return async dispatch =>{
-        dispatch(authStart())
+        dispatch(signUpStart())
         try {
-            const key = "AIzaSyA4yAH6jdEqymDwGXbDN5z_YxJDmUgpaiA"
-            const URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${key}`
-            const response = await Axios.post(URL,{
+            const response = await Axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${key}`,{
                 email: email,
                 password:password,
                 returnSecureToken:true,
             })
-            dispatch(authSuccess(response.data,name,userName))
+            console.log(response.data)
+            dispatch(signUpSuccess(response.data,name,userName))
         } catch (error) {
             console.log(error)
-            dispatch(authFail(error))
+            dispatch(signUpFail(error))
         }
     }
     
 }
 
 
-export const authStart = () => {
+export const signUpStart = () => {
     return{
-        type:AUTH_START
+        type:SIGN_UP_START
     }
 }
 
-export const authSuccess = (userData,name,username) => {
+export const signUpSuccess = (userData,name,username) => {
     return {
-        type:AUTH_SUCCESS,
+        type:SIGN_UP_SUCCESS,
         email:userData.email,
         token:userData.idToken,
         localId:userData.localId,
@@ -42,15 +46,61 @@ export const authSuccess = (userData,name,username) => {
     }
 }
 
-export const authFail = (error) => {
+export const signUpFail = (error) => {
     return{
-        type:AUTH_FAIL,
+        type:SIGN_UP_FAIL,
+        error:error
+    }
+}
+
+export const logIn = (email,password) => {
+    
+    return async dispatch =>{
+        dispatch(logInStart())
+        try {
+            const response = await Axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${key}`,{
+                email: email,
+                password:password,
+                returnSecureToken:true,
+            })
+            console.log(response.data)
+            dispatch(logInSuccess(response.data))
+        } catch (error) {
+            console.log(error)
+            dispatch(logInFail(error))
+        }
+    }
+    
+}
+
+
+export const logInStart = () => {
+    return{
+        type:LOG_IN_START
+    }
+}
+
+export const logInSuccess = (userData) => {
+    return {
+        type:LOG_IN_SUCCESS,
+        email:userData.email,
+        token:userData.idToken,
+        localId:userData.localId,
+    }
+}
+
+export const logInFail = (error) => {
+    return{
+        type:LOG_IN_FAIL,
         error:error
     }
 }
 
 export{
-    AUTH_START,
-    AUTH_SUCCESS,
-    AUTH_FAIL,
+    SIGN_UP_START,
+    SIGN_UP_SUCCESS,
+    SIGN_UP_FAIL,
+    LOG_IN_START,
+    LOG_IN_SUCCESS,
+    LOG_IN_FAIL
 }
