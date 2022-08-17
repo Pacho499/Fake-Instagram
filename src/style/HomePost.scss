@@ -1,18 +1,18 @@
 @import 'utils.scss';
 
-.mainContainer{
+.mainContainerHome{
     z-index: 1;
     position: relative;
     @include flexColumn;
     color: black;
-    height: 750px;
+    height: 710px;
     width: 400px;
     border: 1px solid $borderColor;
     border-radius: 4px;
     margin-bottom: 20px;
     .user{
         position: relative;
-        right: 100px;
+        right: 110px;
         bottom:10px;
         display: flex;
         align-items: center;
@@ -34,7 +34,7 @@
     }
     .like{
         position: relative;
-        margin-top: 10px;
+        margin-top: 20px;
         display: flex;
         align-items: center;
         right: 30px;

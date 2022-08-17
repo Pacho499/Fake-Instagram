@@ -15,7 +15,7 @@ const SignUp = () => {
     const [canSignUp, setCanSignUp] = useState(false)
 
     
-    const token = useSelector(state => state.token)
+    const token = useSelector(state => state.authReducer.token)
 
     useEffect (() => {
         changeSignInColor()

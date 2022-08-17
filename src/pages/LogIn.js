@@ -14,7 +14,7 @@ const LogIn = () => {
     const [view,setView] = useState(true)
     const [canLogIn,setCanLogIn] = useState(false)
 
-    const token = useSelector (state => state.token)
+    const token = useSelector (state => state.authReducer.token)
 
     const dispatch = useDispatch()
     useEffect(() => {
