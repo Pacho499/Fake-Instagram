@@ -1,7 +1,12 @@
+import Header from "../components/Header"
+import {useState} from "react"
+
 const Home = () => {
+
+    const setIconHome = true
     return(
         <div>
-            <h1>homepage</h1>
+            <Header setIcon={setIconHome}/>
         </div>
     )
 }

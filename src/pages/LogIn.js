@@ -77,6 +77,7 @@ const LogIn = () => {
                             <MyLabel style={{right:"105px"}} text="Password"/>
                             <MyInput autoComplete="password" handleChange={handlePassword} value={password} type={view ? "password" : "text"}/>
                             <button  onClick={changeInputType} className="changeInputType">Mostra</button>
+                            
                         </div>
                         <button onClick={handleLogIn} style={canLogIn ? {backgroundColor:"#0095f6"}:{backgroundColor:"#c0dffd" }} className="logIn">Accedi</button>
                     </form>
