@@ -8,10 +8,10 @@ import heartFill from "../images/heart-fill.png"
 import compassFill from "../images/compass-fill.png"
 import sendFill from "../images/send-fill.png"
 import addFill from "../images/add-fill.png"
-
+import homeFill from "../images/home-fill.png"
 import "../style/Header.scss"
 import { Link } from "react-router-dom"
-const Header = () => {
+const Header = ({iconHome}) => {
     
     return(
         <div className="mainDiv" >
@@ -28,7 +28,6 @@ const Header = () => {
                 <Link to="/Direct">
                     <img height="24px" src={send} alt="" />
                 </Link>
-                
                 <img height="24px" src={add} alt="" />
                 <img height="24px" src={compass} alt="" />
                 <img height="24px" src={heart} alt="" />

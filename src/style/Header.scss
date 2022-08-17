@@ -1,5 +1,8 @@
 @import './utils.scss';
 .mainDiv{
+    z-index: 2;
+    position: fixed;
+    width: 100%;
     background-color: $backgroundSecondaryColor;
     display: flex;
     justify-content: space-between;

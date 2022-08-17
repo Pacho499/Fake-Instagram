@@ -1,12 +1,24 @@
 import Header from "../components/Header"
+import HomePost from "../components/HomePost"
 import {useState} from "react"
+import "../style/Home.scss"
+import PreviewAccount from "../components/PreviewAccount"
 
 const Home = () => {
 
-    const setIconHome = true
+    
     return(
         <div>
-            <Header setIcon={setIconHome}/>
+            <Header/>
+            <div className="mainPost">
+                <div className="post">
+                    <HomePost/>
+                    <HomePost/>
+                </div>
+                <div className="accounts">
+                    <PreviewAccount/>
+                </div>
+            </div>
         </div>
     )
 }

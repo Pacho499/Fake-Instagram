@@ -1,0 +1,52 @@
+@import 'utils.scss';
+
+.mainContainer{
+    z-index: 1;
+    position: relative;
+    @include flexColumn;
+    color: black;
+    height: 750px;
+    width: 400px;
+    border: 1px solid $borderColor;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    .user{
+        position: relative;
+        right: 100px;
+        bottom:10px;
+        display: flex;
+        align-items: center;
+        img{
+            margin-right: 10px;
+        }
+    }
+    .icon{
+        display: flex;
+        position: relative;
+        right: 30px;
+        img{
+            margin-right: 15px;
+        }
+        #save{
+            position: relative;
+            left: 220px;
+        }
+    }
+    .like{
+        position: relative;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        right: 30px;
+        img{
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+        
+    }
+    .description{
+        margin-top: 20px;
+        position: relative;
+        right: 30px;
+    }
+}
