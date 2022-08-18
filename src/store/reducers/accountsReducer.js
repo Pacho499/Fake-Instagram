@@ -3,8 +3,8 @@ import * as actionTypes from "../actions/handleAccounts"
 const initialState = {
     loading:false,
     error:false,
-    username:[],
-    name:[]
+    accountsData:[],
+    
 }
 
 const reducer = (state = initialState, action) => {
@@ -19,8 +19,8 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loading:false,
                 error:false,
-                username:action.username,
-                name:action.name
+                accountsData:action.accountsData
+                
             }
         case actionTypes.GET_RANDOM_ACCOUNTS_FAIL:
             return{

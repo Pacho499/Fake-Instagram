@@ -4,11 +4,11 @@ import send from "../images/send.png"
 import comment from "../images/comment.png"
 import save from "../images/save.png"
 import "../style/HomePost.scss"
-const HomePost = ({username,name}) => {
+const HomePost = ({username,name,profilePhoto}) => {
     return(
         <div className="mainContainerHome">
             <div className="user">
-                <img style={{borderRadius:"50px"}} height="40px" width="40px" src={me} alt=""/>
+                <img style={{borderRadius:"50px"}} height="40px" width="40px" src={profilePhoto} alt=""/>
                 <p>{username}</p>
             </div>
             <div>
@@ -26,7 +26,7 @@ const HomePost = ({username,name}) => {
                     <p>piace a {name} e altri</p>
                 </div>
                 
-                <p className="description">nome utente // descrizione foto</p>
+                <p className="description">{username} // descrizione foto</p>
             </div>
         </div>
     )

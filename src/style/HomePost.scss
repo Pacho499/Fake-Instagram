@@ -11,33 +11,34 @@
     border-radius: 4px;
     margin-bottom: 20px;
     .user{
+        width: 380px;
         position: relative;
-        right: 110px;
         bottom:10px;
         display: flex;
+        justify-content: left;
         align-items: center;
         img{
             margin-right: 10px;
         }
     }
     .icon{
+        width: 380px;
         display: flex;
-        position: relative;
-        right: 30px;
+        justify-content: left;
         img{
             margin-right: 15px;
         }
         #save{
             position: relative;
-            left: 220px;
+            left: 200px;
         }
     }
     .like{
-        position: relative;
+        width: 380px;
         margin-top: 20px;
         display: flex;
         align-items: center;
-        right: 30px;
+        justify-content: left;
         img{
             border-radius: 20px;
             margin-right: 10px;
@@ -45,8 +46,9 @@
         
     }
     .description{
+        width: 380px;
+        text-align: left;
         margin-top: 20px;
-        position: relative;
-        right: 30px;
+        
     }
 }

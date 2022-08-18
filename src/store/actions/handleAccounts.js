@@ -9,16 +9,12 @@ export const getRandomAccounts = () => {
         try {
             const response = await Axios.get("https://randomuser.me/api/?results=5")
             const data = await response.data.results
-            const username = []
-            const name = []
+            const accountsData = []
+            for (let key in data) {
+                accountsData.push(data[key])
+            }
+            dispatch(getRandomAccountsSuccess(accountsData))
             await console.log(data)
-            for (let key in data) {
-                username.push(data[key].login.username)
-            }
-            for (let key in data) {
-                name.push(data[key].name.first)
-            }
-            dispatch(getRandomAccountsSuccess(username))
         } catch (error) {
             console.log(error)
             dispatch(getRandomAccountsFail(error))
@@ -33,10 +29,10 @@ export const getRandomAccountsStart = () => {
     }
 }
 
-export const getRandomAccountsSuccess = (username) => {
+export const getRandomAccountsSuccess = (accountsData) => {
     return {
         type: GET_RANDOM_ACCOUNTS_SUCCESS,
-        username,
+        accountsData,
     }
 }
 
