@@ -4,7 +4,7 @@ import "../style/Home.scss"
 import PreviewAccount from "../components/PreviewAccount"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getRandomAccounts } from "../store/actions/handleAccounts"
+import { getRandomAccounts, getRandomSuggestedAccounts } from "../store/actions/handleAccounts"
 import { getRandomPhotos } from "../store/actions/handlePhoto"
 import HomePosts from "../components/HomePosts"
 const Home = () => {
@@ -15,6 +15,7 @@ const Home = () => {
     useEffect(() => {
         dispatch(getRandomAccounts())
         dispatch(getRandomPhotos())
+        dispatch(getRandomSuggestedAccounts())
     },[])
 
     

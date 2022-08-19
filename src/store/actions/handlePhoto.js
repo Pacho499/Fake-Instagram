@@ -9,11 +9,11 @@ export const getRandomPhotos = () => {
     return async dispatch => {
         dispatch(getRandomPhotosStart())
         try {
-            const response = await Axios.get("https://api.unsplash.com/photos/random/?count=5&client_id=Z02HXpRz-v468JfkU4aPfHQPxHvtI0O-cU-g_V6C0B8")
+            const response = await Axios.get("https://api.unsplash.com/photos/random/?count=20&client_id=Z02HXpRz-v468JfkU4aPfHQPxHvtI0O-cU-g_V6C0B8")
             const data = await response.data
             const photosData = []
             for (let key in data) {
-                photosData.push(data[key])
+                photosData.push(data[key].urls.regular)
             }
             dispatch(getRandomPhotosSuccess(photosData))
         } catch (error) {

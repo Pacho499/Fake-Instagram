@@ -10,6 +10,10 @@
     border: 1px solid $borderColor;
     border-radius: 4px;
     margin-bottom: 20px;
+    button{
+        border: none;
+        background-color: $backgroundPrimaryColor;
+    }
     .user{
         font-weight: 600;
         width: 380px;
@@ -47,6 +51,10 @@
         
     }
     .description{
+        span{
+            font-weight: 600;
+            margin-right: 4px;
+        }
         display: flex;
         width: 380px;
         text-align: left;

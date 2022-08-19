@@ -4,6 +4,7 @@ import send from "../images/send.png"
 import heart from "../images/heart.png"
 import add from "../images/add.png"
 import compass from "../images/compass.png"
+import me from "../images/me.jpg"
 import heartFill from "../images/heart-fill.png"
 import compassFill from "../images/compass-fill.png"
 import sendFill from "../images/send-fill.png"
@@ -31,7 +32,7 @@ const Header = ({iconHome}) => {
                 <img height="24px" src={add} alt="" />
                 <img height="24px" src={compass} alt="" />
                 <img height="24px" src={heart} alt="" />
-                <img height="24px"src={compass} alt="" />
+                <img style={{borderRadius:"20px"}} width="24px" height="24px"src={me} alt="" />
             </div>
         </div>
        
