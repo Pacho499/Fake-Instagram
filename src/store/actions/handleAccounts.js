@@ -13,8 +13,8 @@ export const getRandomAccounts = () => {
             for (let key in data) {
                 accountsData.push(data[key])
             }
+
             dispatch(getRandomAccountsSuccess(accountsData))
-            await console.log(data)
         } catch (error) {
             console.log(error)
             dispatch(getRandomAccountsFail(error))

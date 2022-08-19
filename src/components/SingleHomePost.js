@@ -4,7 +4,11 @@ import send from "../images/send.png"
 import comment from "../images/comment.png"
 import save from "../images/save.png"
 import "../style/HomePost.scss"
-const HomePost = ({username,name,profilePhoto}) => {
+import { useSelector } from "react-redux"
+const SingleHomePost = ({username,name,profilePhoto,img}) => {
+
+    
+
     return(
         <div className="mainContainerHome">
             <div className="user">
@@ -12,7 +16,7 @@ const HomePost = ({username,name,profilePhoto}) => {
                 <p>{username}</p>
             </div>
             <div>
-                <img width="400px"  src={me} alt="" />
+                <img width="400px" src={me} alt="" />
             </div>
             <div>
                 <div className="icon">
@@ -26,10 +30,12 @@ const HomePost = ({username,name,profilePhoto}) => {
                     <p>piace a {name} e altri</p>
                 </div>
                 
-                <p className="description">{username} // descrizione foto</p>
+                <h4 className="description">
+                    <p>{username}</p> descrizione foto
+                </h4>
             </div>
         </div>
     )
 }
 
-export default HomePost
+export default SingleHomePost

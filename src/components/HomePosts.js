@@ -1,9 +1,22 @@
-import HomePost from "./HomePost"
-const HomePosts = ({data}) => {
-    const renderRandomAccounts = () => {
-        return data.map((data,index) => {
+import SingleHomePost from "./SingleHomePost"
+import { useSelector } from "react-redux"
+const HomePosts = () => {
+
+    const accountsData = useSelector(state => state.accountsReducer.accountsData)
+    const immage = useSelector(state => state.photoReducer.photosData)
+    
+    console.log(immage)
+    const renderRandomImmage = () => {
+        return immage.map(img => {
             return(
-            <HomePost 
+                <img height="550px" width="400px" src={img.urls.regular} alt="" />
+            )
+        }) 
+    }
+    const renderRandomAccounts = () => {
+        return accountsData.map((data,index) => {
+            return(
+            <SingleHomePost 
             username={data.login.username}
             key={index}
             name={data.name.first}
@@ -14,9 +27,11 @@ const HomePosts = ({data}) => {
             )
         })
     }
+    
     return(
         <div>
             {renderRandomAccounts()}
+            {renderRandomImmage()}
         </div>
     )
 } 
