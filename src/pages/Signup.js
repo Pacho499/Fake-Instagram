@@ -5,7 +5,7 @@ import MyInput from "../components/MyInput"
 import MyLabel from "../components/MyLabel"
 import { Link, Navigate } from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
-import {signUp} from "../store/actions/handleAuth"
+import {signUp, saveUserData} from "../store/actions/handleAuth"
 const SignUp = () => {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
@@ -47,11 +47,10 @@ const SignUp = () => {
     }
 
     const dispatch = useDispatch()
-
-    const handleSignUp = (e) => {
+    const handleSignUp = async (e) => {
         if(canSignUp === true) {
             e.preventDefault();
-            dispatch(signUp(email,password,name,userName));
+            await dispatch(signUp(email,password,name,userName));
             setEmail("")
             setName("")
             setUserName("")

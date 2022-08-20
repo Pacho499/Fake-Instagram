@@ -12,19 +12,25 @@ import addFill from "../images/add-fill.png"
 import homeFill from "../images/home-fill.png"
 import "../style/Header.scss"
 import { Link } from "react-router-dom"
-const Header = ({iconHome}) => {
-    
+import { useSelector } from "react-redux"
+const Header = ({}) => {
+
+    const localId = useSelector(state => state.authReducer.localId)
+
     return(
         <div className="mainDiv" >
             <div className="logoDiv">
-                <img width="103px" src={logo} alt="logo" />
+                <Link to="/Home">
+                    <img width="103px" src={logo} alt="logo" />
+                </Link>
+                
             </div>
             <div className="inputDiv">
                 <input type="text" placeholder="Cerca"/>
             </div>
             <div className="iconsDiv">
                 <Link to="/Home">
-                    <img height="24px" src={home} alt="" />
+                 <img height="24px" src={home} alt="" />  
                 </Link>
                 <Link to="/Direct">
                     <img height="24px" src={send} alt="" />
@@ -32,7 +38,10 @@ const Header = ({iconHome}) => {
                 <img height="24px" src={add} alt="" />
                 <img height="24px" src={compass} alt="" />
                 <img height="24px" src={heart} alt="" />
+                <Link to={`../account/${localId}`}>
                 <img style={{borderRadius:"20px"}} width="24px" height="24px"src={me} alt="" />
+                </Link>
+                
             </div>
         </div>
        

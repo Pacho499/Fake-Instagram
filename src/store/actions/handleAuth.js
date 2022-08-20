@@ -1,7 +1,11 @@
 import Axios from "axios"
+import { useSelector } from "react-redux"
 const SIGN_UP_START = "SIGN_UP_START"
 const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS"
 const SIGN_UP_FAIL = "SIGN_UP_FAIL"
+const SAVE_USER_DATA_START = "SAVE_USER_DATA_START"
+const SAVE_USER_DATA_SUCCESS = "SAVE_USER_DATA_SUCCESS"
+const SAVE_USER_DATA_FAIL = "SAVE_USER_DATA_FAIL"
 const LOG_IN_START = "LOG_IN_START"
 const LOG_IN_SUCCESS = "LOG_IN_SUCCESS"
 const LOG_IN_FAIL = "LOG_IN_FAIL"
@@ -18,6 +22,7 @@ export const signUp = (email,password,name,userName) => {
                 password:password,
                 returnSecureToken:true,
             })
+            console.log(name,userName)
             console.log(response.data)
             dispatch(signUpSuccess(response.data,name,userName))
         } catch (error) {
@@ -35,20 +40,58 @@ export const signUpStart = () => {
     }
 }
 
-export const signUpSuccess = (userData,name,username) => {
+export const signUpSuccess = (userData,name,userName) => {
     return {
         type:SIGN_UP_SUCCESS,
         email:userData.email,
         token:userData.idToken,
         localId:userData.localId,
-        name,
-        username,
+        realName:name,
+        userName:userName
     }
 }
 
 export const signUpFail = (error) => {
     return{
         type:SIGN_UP_FAIL,
+        error:error
+    }
+}
+export const saveUserData = (localId,name,userName) => {
+    
+    return async dispatch =>{
+        dispatch(saveUserDataStart())
+        try {
+            const response = await Axios.post(`https://reactfinal-36831-default-rtdb.europe-west1.firebasedatabase.app/account/${localId}`,{
+                realName:name,
+                userName
+            })
+            console.log(response)
+            dispatch(saveUserDataSuccess())
+        } catch (error) {
+            console.log(error)
+            dispatch(saveUserDataFail(error))
+        }
+    }
+    
+}
+
+
+export const saveUserDataStart = () => {
+    return{
+        type:SAVE_USER_DATA_START
+    }
+}
+
+export const saveUserDataSuccess = () => {
+    return {
+        type:SAVE_USER_DATA_SUCCESS,
+    }
+}
+
+export const saveUserDataFail = (error) => {
+    return{
+        type:SAVE_USER_DATA_FAIL,
         error:error
     }
 }
@@ -102,5 +145,8 @@ export{
     SIGN_UP_FAIL,
     LOG_IN_START,
     LOG_IN_SUCCESS,
-    LOG_IN_FAIL
+    LOG_IN_FAIL,
+    SAVE_USER_DATA_START,
+    SAVE_USER_DATA_SUCCESS,
+    SAVE_USER_DATA_FAIL
 }

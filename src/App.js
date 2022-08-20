@@ -11,6 +11,8 @@ function App() {
         <Route exact path="/Signup" element={<SignUp/>}/>
         <Route exact path="/Home" element={<Home/>}/>
         <Route exact path="/Direct" element={<Direct/>}/>
+        <Route exact path="/account/:localId" element={<Direct/>}/>
+
       </Routes>
       
     </div>
