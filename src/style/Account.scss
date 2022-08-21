@@ -1,0 +1,54 @@
+@import "utils.scss";
+.bioContainer{
+    @include flex;
+    position: relative;
+    top: 120px;
+    .profilePhoto{
+        img{
+            border-radius: 100px;
+            margin-right: 80px;
+        }
+
+        
+    }
+    .userDataContainer{
+        display: flex;
+        flex-direction: column;
+        .userName{
+            h1{
+                font-size: 28px;
+                font-weight: 400;
+                margin-right: 30px;
+            }
+            button{
+                font-size: 14px;
+                padding: 8px;
+                font-weight: 600;
+                background-color: $backgroundPrimaryColor;
+                border: 1px solid $borderColor;
+                border-radius: 4px;
+            }
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .numbers{
+            display: flex;
+            margin-bottom: 12px;
+            
+            p{
+                margin-right: 30px;
+                span{
+                    font-weight: 600;
+                }
+            }
+        }
+        .mainBio{
+            h2{
+                font-size: 16px;
+            }
+            
+        }
+          
+    }
+
+}

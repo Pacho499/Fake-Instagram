@@ -15,7 +15,7 @@ import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 const Header = ({}) => {
 
-    const localId = useSelector(state => state.authReducer.localId)
+    const userName = useSelector(state => state.accountsReducer.userName)
 
     return(
         <div className="mainDiv" >
@@ -38,7 +38,7 @@ const Header = ({}) => {
                 <img height="24px" src={add} alt="" />
                 <img height="24px" src={compass} alt="" />
                 <img height="24px" src={heart} alt="" />
-                <Link to={`../account/${localId}`}>
+                <Link to={`../${userName}`}>
                 <img style={{borderRadius:"20px"}} width="24px" height="24px"src={me} alt="" />
                 </Link>
                 

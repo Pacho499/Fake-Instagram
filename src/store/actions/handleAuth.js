@@ -27,7 +27,7 @@ export const signUp = (email,password,name,userName) => {
                 realName:name,
                 userName:userName
             })
-            dispatch(signUpSuccess(response.data,saveUserName.data))
+            dispatch(signUpSuccess(response.data))
         } catch (error) {
             console.log(error)
             dispatch(signUpFail(error))
@@ -43,14 +43,12 @@ export const signUpStart = () => {
     }
 }
 
-export const signUpSuccess = (userData,userName) => {
+export const signUpSuccess = (userData) => {
     return {
         type:SIGN_UP_SUCCESS,
         email:userData.email,
         token:userData.idToken,
         localId:userData.localId,
-        realName:userName.realName,
-        userName:userName.userName,
     }
 }
 

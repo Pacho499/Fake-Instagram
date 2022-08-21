@@ -94,8 +94,6 @@ export const getMainAccountUserName = (localId) => {
         try {
             const response = await Axios.get(`https://reactfinal-36831-default-rtdb.europe-west1.firebasedatabase.app/account/${localId}.json`)
             const data = await response.data
-            console.log(data)
-
             dispatch(getMainAccountUserNameSuccess(data))
         } catch (error) {
             console.log(error)

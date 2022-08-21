@@ -6,8 +6,6 @@ const initialState = {
     localId:null,
     loading:false,
     error:false,
-    realName:null,
-    userName:null
 }
 
 const reducer = (state = initialState,action) => {
@@ -25,8 +23,6 @@ const reducer = (state = initialState,action) => {
                 email: action.email,
                 token: action.token,
                 localId:action.localId,
-                realName:action.realName,
-                userName:action.userName,
             }
         case(actionTypes).SIGN_UP_FAIL:
             return{
