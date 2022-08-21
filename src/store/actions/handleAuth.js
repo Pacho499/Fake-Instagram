@@ -22,9 +22,12 @@ export const signUp = (email,password,name,userName) => {
                 password:password,
                 returnSecureToken:true,
             })
-            console.log(name,userName)
-            console.log(response.data)
-            dispatch(signUpSuccess(response.data,name,userName))
+            const localId = response.data.localId
+            const saveUserName = await Axios.put(`https://reactfinal-36831-default-rtdb.europe-west1.firebasedatabase.app/account/${localId}.json`,{
+                realName:name,
+                userName:userName
+            })
+            dispatch(signUpSuccess(response.data,saveUserName.data))
         } catch (error) {
             console.log(error)
             dispatch(signUpFail(error))
@@ -40,14 +43,14 @@ export const signUpStart = () => {
     }
 }
 
-export const signUpSuccess = (userData,name,userName) => {
+export const signUpSuccess = (userData,userName) => {
     return {
         type:SIGN_UP_SUCCESS,
         email:userData.email,
         token:userData.idToken,
         localId:userData.localId,
-        realName:name,
-        userName:userName
+        realName:userName.realName,
+        userName:userName.userName,
     }
 }
 
@@ -62,7 +65,7 @@ export const saveUserData = (localId,name,userName) => {
     return async dispatch =>{
         dispatch(saveUserDataStart())
         try {
-            const response = await Axios.post(`https://reactfinal-36831-default-rtdb.europe-west1.firebasedatabase.app/account/${localId}`,{
+            const response = await Axios.post(`https://reactfinal-36831-default-rtdb.europe-west1.firebasedatabase.app/account/${localId}.json`,{
                 realName:name,
                 userName
             })

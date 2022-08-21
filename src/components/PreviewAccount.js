@@ -2,7 +2,7 @@ import me from "../images/me.jpg"
 import "../style/PreviewAccount.scss"
 import {useSelector} from "react-redux"
 import SuggestedAccount from "./SuggestedAccount"
-const PreviewAccount = ()  => {
+const PreviewAccount = ({realName, userName})  => {
 
     const suggestedAccountsData = useSelector(state => state.accountsReducer.suggestedAccountsData)
 
@@ -20,8 +20,8 @@ const PreviewAccount = ()  => {
             <div className="mainAccount">
             <img height="50px" width="50px" src={me} alt="" />
                 <div className="mainAccountInfo">
-                    <h2>nome utente</h2>
-                    <p>nome e cognome</p>
+                    <h2>{userName}</h2>
+                    <p>{realName}</p>
                 </div>
             </div>
             <h3>suggerimenti per te</h3>

@@ -4,7 +4,7 @@ import "../style/Home.scss"
 import PreviewAccount from "../components/PreviewAccount"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getRandomAccounts, getRandomSuggestedAccounts } from "../store/actions/handleAccounts"
+import { getMainAccountUserName, getRandomAccounts, getRandomSuggestedAccounts } from "../store/actions/handleAccounts"
 import { getRandomPhotos } from "../store/actions/handlePhoto"
 import Axios from "axios"
 import HomePosts from "../components/HomePosts"
@@ -12,41 +12,27 @@ const Home = () => {
     
     const dispatch = useDispatch()
     const loading = useSelector(state=> state.accountsReducer.loading)
-    const localId = useSelector(state => state.authReducer.localId)
-    const realName = useSelector(state => state.authReducer.realName)
-    const userName = useSelector(state => state.authReducer.userName)
-    const home = true
+    const localId = useSelector(state=> state.authReducer.localId)
+    const realName = useSelector(state => state.accountsReducer.realName)
+    const userName = useSelector(state => state.accountsReducer.userName)
 
     //rivedere ma siamo sulla strada giusta
     useEffect(() => {
         dispatch(getRandomAccounts())
         dispatch(getRandomPhotos())
         dispatch(getRandomSuggestedAccounts())
-        const saveUserData = async (localId,realName,userName) => {
-            try {
-                const response = await Axios.put(`https://reactfinal-36831-default-rtdb.europe-west1.firebasedatabase.app/account/${localId}.json`,{
-                    realName,
-                    userName
-                })
-                console.log(response)
-            } catch (error) {
-                console.log(error)
-            }
-
-        }
-        saveUserData(localId,realName,userName)
-       
+        dispatch(getMainAccountUserName(localId))
     },[])
 
     return(
         <div>
-            <Header home={home}/>
+            <Header/>
             <div className="mainPost">
                 <div className="post">
                     {loading ? <Spinner/>  : <HomePosts/> }
                 </div>
                 <div className="accounts">
-                    <PreviewAccount/>
+                    <PreviewAccount realName={realName} userName={userName}/>
                 </div>
             </div>
         </div>

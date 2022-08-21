@@ -5,6 +5,9 @@ const GET_RANDOM_ACCOUNTS_FAIL = "GET_RANDOM_ACCOUNTS_FAIL"
 const GET_RANDOM_SUGGESTED_ACCOUNTS_START = "GET_RANDOM_SUGGESTED_ACCOUNTS_START"
 const GET_RANDOM_SUGGESTED_ACCOUNTS_SUCCESS = "GET_RANDOM_SUGGESTED_ACCOUNTS_SUCCESS"
 const GET_RANDOM_SUGGESTED_ACCOUNTS_FAIL = "GET_RANDOM_SUGGESTED_ACCOUNTS_FAIL"
+const GET_MAIN_ACCOUNT_USERNAME_START = "GET_MAIN_ACCOUNT_USERNAME_START"
+const GET_MAIN_ACCOUNT_USERNAME_SUCCESS = "GET_MAIN_ACCOUNT_USERNAME_SUCCESS"
+const GET_MAIN_ACCOUNT_USERNAME_FAIL = "GET_ MAIN_ACCOUNT_USERNAME_FAIL"
 
 export const getRandomAccounts = () => {
     return async dispatch => {
@@ -85,6 +88,44 @@ export const getRandomSuggestedAccountsFail = (error) => {
         error: error
     }
 }
+export const getMainAccountUserName = (localId) => {
+    return async dispatch => {
+        dispatch(getMainAccountUserNameStart())
+        try {
+            const response = await Axios.get(`https://reactfinal-36831-default-rtdb.europe-west1.firebasedatabase.app/account/${localId}.json`)
+            const data = await response.data
+            console.log(data)
+
+            dispatch(getMainAccountUserNameSuccess(data))
+        } catch (error) {
+            console.log(error)
+            dispatch(getMainAccountUserNameFail(error))
+        }
+    }
+    
+}
+
+export const getMainAccountUserNameStart = () => {
+    return{
+        type: GET_MAIN_ACCOUNT_USERNAME_START
+    }
+}
+
+export const getMainAccountUserNameSuccess = (data) => {
+    return {
+        type: GET_MAIN_ACCOUNT_USERNAME_SUCCESS,
+        realName:data.realName,
+        userName:data.userName,
+        
+    }
+}
+
+export const getMainAccountUserNameFail = (error) => {
+    return{
+        type: GET_MAIN_ACCOUNT_USERNAME_FAIL,
+        error: error
+    }
+}
 
 
 export {
@@ -93,5 +134,8 @@ export {
     GET_RANDOM_ACCOUNTS_FAIL,
     GET_RANDOM_SUGGESTED_ACCOUNTS_START,
     GET_RANDOM_SUGGESTED_ACCOUNTS_SUCCESS,
-    GET_RANDOM_SUGGESTED_ACCOUNTS_FAIL
+    GET_RANDOM_SUGGESTED_ACCOUNTS_FAIL,
+    GET_MAIN_ACCOUNT_USERNAME_START,
+    GET_MAIN_ACCOUNT_USERNAME_SUCCESS,
+    GET_MAIN_ACCOUNT_USERNAME_FAIL
 }
