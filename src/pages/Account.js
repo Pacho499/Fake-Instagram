@@ -1,11 +1,21 @@
 import me from "../images/me.jpg"
 import Header from "../components/Header"
 import "../style/Account.scss"
-import { useSelector } from "react-redux"
+import { useEffect } from "react"
+import {getMainAccountData} from "../store/actions/handleMainAccount"
+import { useDispatch, useSelector } from "react-redux"
+import {Link} from "react-router-dom"
 const Account = () => {
 
+
+    const dispatch = useDispatch()
     const userName = useSelector(state => state.accountsReducer.userName)
     const realName = useSelector(state => state.accountsReducer.realName)
+    const localId = useSelector(state => state.authReducer.localId)
+    const bio = useSelector(state => state.mainAccountReducer.bio)
+    useEffect(() => {
+        dispatch(getMainAccountData(localId))
+    })
 
     return(
         <div>
@@ -17,7 +27,10 @@ const Account = () => {
                 <div className="userDataContainer">
                     <div className="userName">
                         <h1>{userName}</h1>
-                        <button>Modifica profilo</button>
+                        <Link to={`/${userName}/settings`}>
+                            <button>Modifica profilo</button>
+                        </Link>
+                        
                     </div>
                     <div className="numbers">
                         <p>Post: <span>10</span></p>
@@ -26,7 +39,7 @@ const Account = () => {
                     </div>
                     <div className="mainBio">
                         <h2>{realName}</h2>
-                        <p>bio</p>
+                        <p>{bio}</p>
                     </div>
                 </div>
                 

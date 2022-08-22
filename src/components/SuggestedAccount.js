@@ -1,6 +1,4 @@
 const SuggestedAccount = ({profilePhoto, userName}) => {
-    const style = {
-        display:"flex",}
     return (
         <div style={{display:"flex", alignItems:"center", marginTop:"10px"}}>
             <img style={{borderRadius:"20px", border:"1px solid black", marginRight:"10px"}} height="40px" width="40px" src={profilePhoto} alt="" />

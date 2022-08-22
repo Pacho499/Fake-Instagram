@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import{Route,Routes} from 'react-router-dom'
 import Direct from "./pages/Direct";
 import Account from "./pages/Account";
+import AccountSetting from "./pages/AccountSettings";
 function App() {
   return (
     <div className="App">
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/Home" element={<Home/>}/>
         <Route exact path="/Direct" element={<Direct/>}/>
         <Route exact path="/:userName" element={<Account/>}/>
+        <Route exact path="/:userName/settings" element={<AccountSetting/>}/>
 
       </Routes>
       
