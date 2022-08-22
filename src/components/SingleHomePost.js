@@ -24,7 +24,7 @@ const SingleHomePost = ({username,name,profilePhoto,immage}) => {
             </div>
             <div>
                 <div className="icon">
-                    <button onClick={sendLike}>{like ? <img height="24px" src={heartFill}/>  : <img height="24px" src={heart} alt="" />}</button>
+                    <button onClick={sendLike}>{like ? <img height="24px" src={heartFill}/>  : <img height="24px" src={heart} alt="like" />}</button>
                     
                     <img height= "24px" src={comment} alt="" />
                     <img height="24px" src={send} alt="" />

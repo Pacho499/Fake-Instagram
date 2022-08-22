@@ -2,10 +2,20 @@ import LogIn from "./pages/LogIn";
 import SignUp from "./pages/Signup"
 import Home from "./pages/Home"
 import{Route,Routes} from 'react-router-dom'
+import {useSelector, useDispatch} from "react-redux"
+import {useEffect} from "react"
+import { authCheck } from "./store/actions/handleAuth";
 import Direct from "./pages/Direct";
 import Account from "./pages/Account";
 import AccountSetting from "./pages/AccountSettings";
 function App() {
+
+  const token = useSelector(state=> state.authReducer.token)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authCheck())
+  }, [])
   return (
     <div className="App">
       <Routes>

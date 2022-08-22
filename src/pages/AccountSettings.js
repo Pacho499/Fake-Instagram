@@ -3,22 +3,25 @@ import { useState} from "react"
 import { useDispatch, useSelector } from "react-redux"
 import {changeMainAccountData} from "../store/actions/handleMainAccount"
 import { getMainAccountUserName } from "../store/actions/handleAccounts"
+import { useNavigate } from "react-router-dom"
 import Header from "../components/Header"
 import "../style/AccountSetting.scss"
-import { Navigate } from "react-router-dom"
 const AccountSetting = () => {
 
     const userName = useSelector(state => state.accountsReducer.userName)
     const realName = useSelector(state => state.accountsReducer.realName)
     const localId = useSelector(state => state.authReducer.localId)
+    const stateBio = useSelector(state => state.mainAccountReducer.bio)
+    
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
    
     
-
-    const [inputName,setInputName] = useState("")
-    const [inputUserName,setInputUserName] = useState("")
-    const [bio, setBio] = useState("")
+   
+    const [inputName,setInputName] = useState(realName)
+    const [inputUserName,setInputUserName] = useState(userName)
+    const [bio, setBio] = useState(stateBio)
 
     const handleName = (e) => {
         setInputName(e.target.value)
@@ -31,11 +34,17 @@ const AccountSetting = () => {
     }
     const changeData = (e) => {
         e.preventDefault()
+        if (inputName.value === ""){
+            setInputName(realName)
+        }
+        if (inputUserName.trim() === ""){
+            setInputUserName(userName)
+        }
+        console.log(inputName)
         dispatch(changeMainAccountData(localId,inputName,inputUserName,bio))
         dispatch(getMainAccountUserName(localId))
         setBio("")
-        setInputName("")
-        setInputUserName("")
+        navigate("/Home")
     }
 
 
@@ -72,11 +81,6 @@ const AccountSetting = () => {
                     </div>
 
                     <button onClick={changeData}>invia</button>
-                    
-                    
-                    
-                    
-                    
                 </form>
             </div>
         </div>

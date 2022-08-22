@@ -6,7 +6,6 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getMainAccountUserName, getRandomAccounts, getRandomSuggestedAccounts } from "../store/actions/handleAccounts"
 import { getRandomPhotos } from "../store/actions/handlePhoto"
-import Axios from "axios"
 import HomePosts from "../components/HomePosts"
 const Home = () => {
     

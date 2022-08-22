@@ -19,7 +19,7 @@ export const changeMainAccountData = (localId,inputName,inputUserName,bio) => {
                 bio:bio
             })
             const data = response.data
-            console.log(data)
+
             
 
             dispatch(changeMainAccountDataSuccess(data))
@@ -53,7 +53,7 @@ export const changeMainAccountDataFail = (error) => {
         error: error
     }
 }
-export const getMainAccountData = (localId,inputName,inputUserName,bio) => {
+export const getMainAccountData = (localId) => {
     return async dispatch => {
         dispatch(getMainAccountDataStart())
         try {

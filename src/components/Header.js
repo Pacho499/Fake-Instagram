@@ -13,9 +13,22 @@ import homeFill from "../images/home-fill.png"
 import "../style/Header.scss"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
+import {useState} from "react"
+import { logout } from "../store/actions/handleAuth"
+import { useDispatch } from "react-redux"
 const Header = ({}) => {
 
+    const dispatch = useDispatch()
     const userName = useSelector(state => state.accountsReducer.userName)
+    const [viewOptions, setViewOptions] = useState(false)
+    const renderOptions = () => {
+        setViewOptions(!viewOptions)
+    }
+
+    const accountLogout = (e) => {
+        dispatch(logout())
+        setViewOptions(true)
+    }
 
     return(
         <div className="mainDiv" >
@@ -38,10 +51,19 @@ const Header = ({}) => {
                 <img height="24px" src={add} alt="" />
                 <img height="24px" src={compass} alt="" />
                 <img height="24px" src={heart} alt="" />
-                <Link to={`../${userName}`}>
-                <img style={{borderRadius:"20px"}} width="24px" height="24px"src={me} alt="" />
-                </Link>
-                
+                <button onClick={renderOptions}><img style={{borderRadius:"20px"}} width="24px" height="24px"src={me} alt="" /></button> 
+                <div style={viewOptions ? {opacity:"1"} : {opacity:"0"}} className="accountOptions">
+                    <Link style={{textDecoration:"none", color:"black"}} to={`../${userName}`}>
+                        <p>Account</p>
+                    </Link>
+                    <Link style={{textDecoration:"none", color:"black"}} to={`../${userName}/settings`}>
+                        <p>impostazioni</p>
+                    </Link>
+                    <Link onClick={accountLogout} style={{textDecoration:"none", color:"black"}} to="/">
+                        <p>Esci</p>
+                    </Link>
+                    
+                </div>
             </div>
         </div>
        

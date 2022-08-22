@@ -9,7 +9,7 @@ const SAVE_USER_DATA_FAIL = "SAVE_USER_DATA_FAIL"
 const LOG_IN_START = "LOG_IN_START"
 const LOG_IN_SUCCESS = "LOG_IN_SUCCESS"
 const LOG_IN_FAIL = "LOG_IN_FAIL"
-
+const LOGOUT = "LOGOUT"
 
 const key = "AIzaSyA4yAH6jdEqymDwGXbDN5z_YxJDmUgpaiA"
 export const signUp = (email,password,name,userName) => {
@@ -28,6 +28,8 @@ export const signUp = (email,password,name,userName) => {
                 userName:userName
             })
             dispatch(signUpSuccess(response.data))
+            localStorage.setItem('token', response.data.idToken)
+            localStorage.setItem('userId', response.data.localId)
         } catch (error) {
             console.log(error)
             dispatch(signUpFail(error))
@@ -107,14 +109,30 @@ export const logIn = (email,password) => {
                 password:password,
                 returnSecureToken:true,
             })
-            console.log(response.data)
+            
             dispatch(logInSuccess(response.data))
+            localStorage.setItem('token', response.data.idToken)
+            localStorage.setItem('userId', response.data.localId)
         } catch (error) {
             console.log(error)
             dispatch(logInFail(error))
         }
     }
     
+}
+
+export const authCheck = () => {
+    return dispatch => {
+        const token = localStorage.getItem('token')
+        if(!token){
+            return;
+        }
+        const userId = localStorage.getItem('userId')
+        dispatch(logInSuccess({
+            idToken: token, 
+            localId: userId
+        }))
+    }
 }
 
 
@@ -140,6 +158,15 @@ export const logInFail = (error) => {
     }
 }
 
+export const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+
+    return{
+        type: LOGOUT,
+    }
+}
+
 export{
     SIGN_UP_START,
     SIGN_UP_SUCCESS,
@@ -149,5 +176,6 @@ export{
     LOG_IN_FAIL,
     SAVE_USER_DATA_START,
     SAVE_USER_DATA_SUCCESS,
-    SAVE_USER_DATA_FAIL
+    SAVE_USER_DATA_FAIL,
+    LOGOUT
 }

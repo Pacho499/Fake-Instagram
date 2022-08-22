@@ -32,5 +32,21 @@
         img{
             margin: 0 10px;
         }
+        button{
+            border: none;
+            background-color: $backgroundSecondaryColor;
+        }
+    }
+    .accountOptions{
+        position: absolute;
+        right: 40px;
+        top: 50px;
+        opacity: 0;
+        background-color: $backgroundSecondaryColor;
+        p{
+            border: 1px solid $borderColor;
+            padding: 10px;
+        }
+
     }
 }
