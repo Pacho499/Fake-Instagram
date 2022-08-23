@@ -1,4 +1,5 @@
 @import "utils.scss";
+
 .bioContainer{
     @include flex;
     position: relative;
@@ -50,5 +51,17 @@
         }
           
     }
+    
 
+}
+.photoContainer{
+    position: relative;
+    top: 200px;
+    display: grid;
+    width: 70%;
+    margin: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    img{
+        margin-bottom: 20px;
+    }
 }

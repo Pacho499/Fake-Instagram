@@ -32,7 +32,7 @@ const AccountSetting = () => {
     const handleBio = (e) => {
         setBio(e.target.value)
     }
-    const changeData = (e) => {
+    const changeData = async (e) => {
         e.preventDefault()
         if (inputName.value === ""){
             setInputName(realName)
@@ -41,8 +41,8 @@ const AccountSetting = () => {
             setInputUserName(userName)
         }
         console.log(inputName)
-        dispatch(changeMainAccountData(localId,inputName,inputUserName,bio))
-        dispatch(getMainAccountUserName(localId))
+        await dispatch(changeMainAccountData(localId,inputName,inputUserName,bio))
+        await dispatch(getMainAccountUserName(localId))
         setBio("")
         navigate("/Home")
     }

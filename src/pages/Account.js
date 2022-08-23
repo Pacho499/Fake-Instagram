@@ -3,6 +3,7 @@ import Header from "../components/Header"
 import "../style/Account.scss"
 import { useEffect } from "react"
 import {getMainAccountData} from "../store/actions/handleMainAccount"
+import {getPhoto} from "../store/actions/handlePhoto"
 import { useDispatch, useSelector } from "react-redux"
 import {Link} from "react-router-dom"
 const Account = () => {
@@ -11,14 +12,31 @@ const Account = () => {
     const dispatch = useDispatch()
     const userName = useSelector(state => state.accountsReducer.userName)
     const realName = useSelector(state => state.accountsReducer.realName)
+    const userPhotoList = useSelector(state => state.photoReducer.userPhotoList)
     const localId = useSelector(state => state.authReducer.localId)
     const bio = useSelector(state => state.mainAccountReducer.bio)
     useEffect(() => {
         dispatch(getMainAccountData(localId))
-    })
+        dispatch(getPhoto(localId))
+    },[])
+
+    
+    const renderPhoto = () => {
+       if (userPhotoList.length < 0) {
+           return
+       }else{
+           userPhotoList.reverse()
+           return userPhotoList.map((url,index) => {
+               return(
+                   <img height="300px" width="300px" key={index} src={url} alt="" />
+               )
+           })
+       }
+        
+   }
 
     return(
-        <div>
+        <div className="accountContainer">
             <Header/>
             <div className="bioContainer">
                 <div className="profilePhoto">
@@ -33,7 +51,7 @@ const Account = () => {
                         
                     </div>
                     <div className="numbers">
-                        <p>Post: <span>10</span></p>
+                        <p>Post: <span>{userPhotoList.length}</span></p>
                         <p><span>297</span> follower</p>
                         <p><span>131</span> profili seguiti</p>
                     </div>
@@ -43,6 +61,10 @@ const Account = () => {
                     </div>
                 </div>
                 
+            </div>
+    
+            <div className="photoContainer">
+                {renderPhoto()}
             </div>
         </div>
         

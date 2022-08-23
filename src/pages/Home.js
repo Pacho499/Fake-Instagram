@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getMainAccountUserName, getRandomAccounts, getRandomSuggestedAccounts } from "../store/actions/handleAccounts"
 import { getRandomPhotos } from "../store/actions/handlePhoto"
 import HomePosts from "../components/HomePosts"
+import { getMainAccountData } from "../store/actions/handleMainAccount"
 const Home = () => {
     
     const dispatch = useDispatch()
@@ -21,6 +22,7 @@ const Home = () => {
         dispatch(getRandomPhotos())
         dispatch(getRandomSuggestedAccounts())
         dispatch(getMainAccountUserName(localId))
+        dispatch(getMainAccountData(localId))
     },[])
 
     return(
