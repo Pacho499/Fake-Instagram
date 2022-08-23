@@ -109,7 +109,6 @@ export const logIn = (email,password) => {
                 password:password,
                 returnSecureToken:true,
             })
-            
             dispatch(logInSuccess(response.data))
             localStorage.setItem('token', response.data.idToken)
             localStorage.setItem('userId', response.data.localId)

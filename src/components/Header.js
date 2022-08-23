@@ -3,10 +3,8 @@ import home from "../images/home.png"
 import send from "../images/send.png"
 import heart from "../images/heart.png"
 import add from "../images/add.png"
-import compass from "../images/compass.png"
 import me from "../images/me.jpg"
 import heartFill from "../images/heart-fill.png"
-import compassFill from "../images/compass-fill.png"
 import sendFill from "../images/send-fill.png"
 import addFill from "../images/add-fill.png"
 import homeFill from "../images/home-fill.png"
@@ -21,15 +19,35 @@ const Header = ({}) => {
     const dispatch = useDispatch()
     const userName = useSelector(state => state.accountsReducer.userName)
     const [viewOptions, setViewOptions] = useState(false)
-    const renderOptions = () => {
+
+    const viewControl = () => {
         setViewOptions(!viewOptions)
     }
 
     const accountLogout = (e) => {
         dispatch(logout())
         setViewOptions(true)
+        
     }
 
+    const renderNav = () => {
+        return(
+            <div className="accountOptions">
+                    <Link style={{textDecoration:"none", color:"black"}} to={`../${userName}`}>
+                        <p>Account</p>
+                    </Link>
+                    <Link style={{textDecoration:"none", color:"black"}} to={`../${userName}/settings`}>
+                        <p>impostazioni</p>
+                    </Link>
+                    <Link onClick={accountLogout} style={{textDecoration:"none", color:"black"}} to="/">
+                        <p>Esci</p>
+                    </Link>
+                    
+            </div>
+        )
+        
+    }
+ 
     return(
         <div className="mainDiv" >
             <div className="logoDiv">
@@ -42,28 +60,21 @@ const Header = ({}) => {
                 <input type="text" placeholder="Cerca"/>
             </div>
             <div className="iconsDiv">
-                <Link to="/Home">
-                 <img height="24px" src={home} alt="" />  
+                <Link onClick={viewControl} to="/Home">
+                 { viewOptions ? <img height="24px" src={home} alt="" />  :
+                 <img src={homeFill} alt="" />}  
                 </Link>
                 <Link to="/Direct">
-                    <img height="24px" src={send} alt="" />
+                    
+                   <img height="24px" src={send} alt="" /> 
+                    
+                   
                 </Link>
                 <img height="24px" src={add} alt="" />
-                <img height="24px" src={compass} alt="" />
+                
                 <img height="24px" src={heart} alt="" />
-                <button onClick={renderOptions}><img style={{borderRadius:"20px"}} width="24px" height="24px"src={me} alt="" /></button> 
-                <div style={viewOptions ? {opacity:"1"} : {opacity:"0"}} className="accountOptions">
-                    <Link style={{textDecoration:"none", color:"black"}} to={`../${userName}`}>
-                        <p>Account</p>
-                    </Link>
-                    <Link style={{textDecoration:"none", color:"black"}} to={`../${userName}/settings`}>
-                        <p>impostazioni</p>
-                    </Link>
-                    <Link onClick={accountLogout} style={{textDecoration:"none", color:"black"}} to="/">
-                        <p>Esci</p>
-                    </Link>
-                    
-                </div>
+                <button onClick={viewControl}><img style={{borderRadius:"20px"}} width="24px" height="24px"src={me} alt="" /></button> 
+                {viewOptions ? renderNav() : null}
             </div>
         </div>
        
