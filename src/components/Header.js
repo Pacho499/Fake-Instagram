@@ -65,12 +65,12 @@ const Header = ({}) => {
                  <img src={homeFill} alt="" />}  
                 </Link>
                 <Link to="/Direct">
-                    
-                   <img height="24px" src={send} alt="" /> 
-                    
-                   
+                    <img height="24px" src={send} alt="" /> 
                 </Link>
-                <img height="24px" src={add} alt="" />
+                <Link to="/newPost">
+                    <img height="24px" src={add} alt="" />
+                </Link>
+                
                 
                 <img height="24px" src={heart} alt="" />
                 <button onClick={viewControl}><img style={{borderRadius:"20px"}} width="24px" height="24px"src={me} alt="" /></button> 
