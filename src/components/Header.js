@@ -52,7 +52,6 @@ const Header = ({}) => {
                 <Link to="/Home">
                     <img width="103px" src={logo} alt="logo" />
                 </Link>
-                
             </div>
             <div className="inputDiv">
                 <input type="text" placeholder="Cerca"/>
@@ -62,14 +61,10 @@ const Header = ({}) => {
                  { viewOptions ? <img height="24px" src={home} alt="" />  :
                  <img src={homeFill} alt="" />}  
                 </Link>
-                <Link to="/Direct">
-                    <img height="24px" src={send} alt="" /> 
-                </Link>
+                <img height="24px" src={send} alt="" /> 
                 <Link to="/newPost">
                     <img height="24px" src={add} alt="" />
                 </Link>
-                
-                
                 <img height="24px" src={heart} alt="" />
                 { profilePhoto ? 
                     <button onClick={viewControl}><img style={{borderRadius:"20px"}} width="24px" height="24px"src={profilePhoto} alt="" /></button> 

@@ -1,5 +1,4 @@
 import Axios from "axios"
-import { useSelector } from "react-redux"
 const SIGN_UP_START = "SIGN_UP_START"
 const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS"
 const SIGN_UP_FAIL = "SIGN_UP_FAIL"

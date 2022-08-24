@@ -5,7 +5,7 @@ import MyInput from "../components/MyInput"
 import MyLabel from "../components/MyLabel"
 import { Link, Navigate } from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
-import {signUp, saveUserData} from "../store/actions/handleAuth"
+import {signUp} from "../store/actions/handleAuth"
 const SignUp = () => {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")

@@ -14,14 +14,9 @@ const AccountSetting = () => {
     const localId = useSelector(state => state.authReducer.localId)
     const stateBio = useSelector(state => state.mainAccountReducer.bio)
     const profilePhoto = useSelector(state => state.photoReducer.profilePhoto)
-
-    
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-   
-    
-   
     const [inputName,setInputName] = useState(realName)
     const [inputUserName,setInputUserName] = useState(userName)
     const [bio, setBio] = useState(stateBio)
@@ -56,14 +51,13 @@ const AccountSetting = () => {
             <Header/>
             <div className="mainSettingContainer">
                 <div className="user">
-                { profilePhoto ? <img height="50px" width="50px" src={profilePhoto} alt="" /> : <img height="50px" width="50px" src={anonimo} alt="" />}
+                    { profilePhoto ? <img height="50px" width="50px" src={profilePhoto} alt="" /> : <img height="50px" width="50px" src={anonimo} alt="" />}
                     <div className="userData">
                         <h1>{userName}</h1>
                         <Link className="linkChangeImg" to="/profilePhoto">
                             <p>Cambia l'immagine del profilo</p>
                         </Link>
                     </div>
-                    
                 </div>
                 <form onSubmit={changeData}>
                     <div className="nameContainer">
@@ -77,9 +71,6 @@ const AccountSetting = () => {
                         </p>
                         </div>
                     </div>
-
-                    
-                    
                     <div className="userNameContainer">
                         <h1>Nome utente</h1>
                         <input onChange={handleUserName} value={inputUserName} type="text" placeholder={userName} />
@@ -88,7 +79,6 @@ const AccountSetting = () => {
                         <h1>Biografia</h1>
                         <textarea value={bio} onChange={handleBio} className="bio" cols="30" rows="10"></textarea>
                     </div>
-
                     <button onClick={changeData}>invia</button>
                 </form>
             </div>

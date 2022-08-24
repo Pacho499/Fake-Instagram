@@ -1,5 +1,5 @@
 import Axios from "axios"
-import {ref,uploadBytes, getDownloadURL, listAll} from "firebase/storage"
+import {ref,uploadBytes, getDownloadURL} from "firebase/storage"
 import {v4} from "uuid"
 
 const GET_RANDOM_PHOTOS_START = "GET_RANDOM_PHOTOS_START"

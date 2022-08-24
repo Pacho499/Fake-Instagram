@@ -43,7 +43,6 @@ const SingleHomePost = () => {
             <div>
                 <div className="icon">
                     <button onClick={sendLike}>{like ? <img height="24px" src={heartFill}/>  : <img height="24px" src={heart} alt="like" />}</button>
-                    
                     <img height= "24px" src={comment} alt="" />
                     <img height="24px" src={send} alt="" />
                     <img id="save" height="24px" src={save} alt="" />
@@ -52,7 +51,6 @@ const SingleHomePost = () => {
                     {like ? renderProfilePhoto() : null}
                     {like ?<p>piace a te </p>  : null }
                 </div>
-                
                 <p className="description">
                     <span>{userName}</span> Lorem ipsum dolor sit amet.
                 </p>

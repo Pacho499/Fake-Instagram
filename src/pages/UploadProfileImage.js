@@ -10,7 +10,6 @@ const UploadImmage = () => {
     const localId = useSelector(state => state.authReducer.localId)
     const loading = useSelector (state => state.photoReducer.loading)
     const userName = useSelector (state => state.mainAccountReducer.userName)
-    const error = useSelector (state => state.photoReducer.error)
     const [imageUpload, setImmageUpload] = useState(null)
     const dispatch = useDispatch()
     const navigate = useNavigate()

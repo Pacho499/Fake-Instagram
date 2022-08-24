@@ -63,7 +63,6 @@ const LogIn = () => {
             <div className="leftContainer">
                 <img className="background" src={background} alt="logo" height="580px" />
                 <img className="loginImg" src={loginImg} alt="login" height="500px" />
-                
             </div>
             <div className="rightContainer">
                 <div className="form">
@@ -89,11 +88,9 @@ const LogIn = () => {
                                 className="singUpButton">Iscriviti
                             </button>
                         </Link>
-                        
                     </p>
                 </div> 
             </div>
-            
         </div>
     )
 }

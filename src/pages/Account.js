@@ -1,12 +1,10 @@
 import anonimo from "../images/anonimo.webp"
 import Header from "../components/Header"
 import "../style/Account.scss"
-import { useEffect, useState } from "react"
-import {getMainAccountData} from "../store/actions/handleMainAccount"
-import {getPhoto, getProfilePhoto} from "../store/actions/handlePhoto"
+import { useEffect } from "react"
+import {getPhoto} from "../store/actions/handlePhoto"
 import { useDispatch, useSelector } from "react-redux"
 import {Link} from "react-router-dom"
-import Spinner from "../components/Spinner"
 const Account = () => {
 
 
@@ -23,13 +21,12 @@ const Account = () => {
 
     
     const renderPhoto = () => {
-        
-           userPhotoList.reverse()
-           return userPhotoList.map((url,index) => {
-               return(
-                   <img height="300px" width="300px" key={index} src={url} alt="" />
-               )
-           })
+        userPhotoList.reverse()
+        return userPhotoList.map((url,index) => {
+            return(
+               <img height="300px" width="300px" key={index} src={url} alt="" />
+            )
+        })
        
     }
 
@@ -54,7 +51,6 @@ const Account = () => {
                         <Link to={`/${userName}/settings`}>
                             <button>Modifica profilo</button>
                         </Link>
-                        
                     </div>
                     <div className="numbers">
                         <p>Post: <span className="post">{userPhotoList.length}</span></p>
@@ -68,12 +64,10 @@ const Account = () => {
                 </div>
                 
             </div>
-    
             <div className="photoContainer">
                 {userPhotoList ? renderPhoto() : null }
             </div>
         </div>
-        
     )
 }
 
