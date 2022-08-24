@@ -8,9 +8,15 @@ const GET_RANDOM_PHOTOS_FAIL = "GET_RANDOM_PHOTOS_FAIL"
 const UPLOAD_PHOTO_START = "UPLOAD_PHOTO_START"
 const UPLOAD_PHOTO_SUCCESS = "UPLOAD_PHOTO_SUCCESS"
 const UPLOAD_PHOTO_FAIL = "UPLOAD_PHOTO_FAIL"
+const UPLOAD_PROFILE_PHOTO_START = "UPLOAD_PROFILE_PHOTO_START"
+const UPLOAD_PROFILE_PHOTO_SUCCESS = "UPLOAD_PROFILE_PHOTO_SUCCESS"
+const UPLOAD_PROFILE_PHOTO_FAIL = "UPLOAD_PROFILE_PHOTO_FAIL"
 const GET_PHOTO_START = "GET_PHOTO_START"
 const GET_PHOTO_SUCCESS = "GET_PHOTO_SUCCESS"
 const GET_PHOTO_FAIL = "GET_PHOTO_FAIL"
+const GET_PROFILE_PHOTO_START = "GET_PROFILE_PHOTO_START"
+const GET_PROFILE_PHOTO_SUCCESS = "GET_PROFILE_PHOTO_SUCCESS"
+const GET_PROFILE_PHOTO_FAIL = "GET_PROFILE_PHOTO_FAIL"
 const UPLOAD_PHOTO_IN_HOME = "UPLOAD_PHOTO_IN_HOME"
 
 export const getRandomPhotos = () => {
@@ -98,6 +104,80 @@ export const uploadPhotoFail = (error) => {
         error: error
     }
 }
+export const uploadProfilePhoto = (storage,imageUpload,localId,userPhotoList) => {
+    return async dispatch => {
+        dispatch(uploadProfilePhotoStart())
+        try {
+            const imageRef = ref(storage, `images/${localId}/${imageUpload.name + v4()}`)
+            const upload = await uploadBytes(imageRef,imageUpload)
+            const url = await getDownloadURL(imageRef)
+            const response = await Axios.put(`https://reactfinal-36831-default-rtdb.europe-west1.firebasedatabase.app/account/${localId}/profilePhoto.json`,
+            [url]
+            )
+            dispatch(uploadProfilePhotoSuccess(url))
+        } catch (error) {
+            console.log(error)
+            dispatch(uploadProfilePhotoFail(error))
+        }
+    }
+    
+}
+
+export const uploadProfilePhotoStart = () => {
+    return{
+        type: UPLOAD_PROFILE_PHOTO_START
+    }
+}
+
+export const uploadProfilePhotoSuccess = (profilePhoto) => {
+    return {
+        type: UPLOAD_PROFILE_PHOTO_SUCCESS,
+        profilePhoto:profilePhoto
+    }
+}
+
+export const uploadProfilePhotoFail = (error) => {
+    return{
+        type: UPLOAD_PROFILE_PHOTO_FAIL,
+        error: error
+    }
+}
+
+export const getProfilePhoto = (localId) => {
+    return async dispatch => {
+        dispatch(getProfilePhotoStart())
+        try {
+            const response = await Axios.get(`https://reactfinal-36831-default-rtdb.europe-west1.firebasedatabase.app/account/${localId}/profilePhoto.json`)
+            const data = response.data
+            console.log(data)
+            dispatch(getProfilePhotoSuccess(data))
+        } catch (error) {
+            console.log(error)
+            dispatch(getProfilePhotoFail(error))
+        }
+    }
+    
+}
+
+export const getProfilePhotoStart = () => {
+    return{
+        type: GET_PROFILE_PHOTO_START
+    }
+}
+
+export const getProfilePhotoSuccess = (profilePhoto) => {
+    return {
+        type: GET_PROFILE_PHOTO_SUCCESS,
+        profilePhoto,
+    }
+}
+
+export const getProfilePhotoFail = (error) => {
+    return{
+        type: GET_PROFILE_PHOTO_FAIL,
+        error: error
+    }
+}
 export const getPhoto = (localId) => {
     return async dispatch => {
         dispatch(getPhotoStart())
@@ -145,8 +225,14 @@ export {
     UPLOAD_PHOTO_START,
     UPLOAD_PHOTO_SUCCESS,
     UPLOAD_PHOTO_FAIL,
+    UPLOAD_PROFILE_PHOTO_START,
+    UPLOAD_PROFILE_PHOTO_SUCCESS,
+    UPLOAD_PROFILE_PHOTO_FAIL,
     GET_PHOTO_START,
     GET_PHOTO_SUCCESS,
     GET_PHOTO_FAIL,
+    GET_PROFILE_PHOTO_START,
+    GET_PROFILE_PHOTO_SUCCESS,
+    GET_PROFILE_PHOTO_FAIL,
     UPLOAD_PHOTO_IN_HOME
 }

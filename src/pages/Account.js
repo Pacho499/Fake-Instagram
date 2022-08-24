@@ -1,4 +1,4 @@
-import me from "../images/me.jpg"
+import anonimo from "../images/anonimo.webp"
 import Header from "../components/Header"
 import "../style/Account.scss"
 import { useEffect, useState } from "react"
@@ -14,6 +14,7 @@ const Account = () => {
     const userName = useSelector(state => state.accountsReducer.userName)
     const realName = useSelector(state => state.accountsReducer.realName)
     const userPhotoList = useSelector(state => state.photoReducer.userPhotoList)
+    const profilePhoto = useSelector(state => state.photoReducer.profilePhoto)
     const localId = useSelector(state => state.authReducer.localId)
     const bio = useSelector(state => state.mainAccountReducer.bio)
     useEffect(() => {
@@ -33,15 +34,22 @@ const Account = () => {
                )
            })
        }
-        
-   }
+    }
+
+    const renderProfilePhoto = () => {
+        if (profilePhoto === null){
+            return( <img width="150px" height="150px" src={anonimo} alt="" /> )
+        }else{
+            return (<img width="150px" height="150px" src={profilePhoto} alt="" />)
+        }
+    }
 
     return(
         <div className="accountContainer">
             <Header/>
             <div className="bioContainer">
                 <div className="profilePhoto">
-                    <img width="150px" height="150px" src={me} alt="" />
+                    {renderProfilePhoto()}
                 </div>
                 <div className="userDataContainer">
                     <div className="userName">

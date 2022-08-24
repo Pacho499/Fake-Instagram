@@ -1,10 +1,11 @@
-import me from "../images/me.jpg"
+import anonimo from "../images/anonimo.webp"
 import { useState} from "react"
 import { useDispatch, useSelector } from "react-redux"
 import {changeMainAccountData} from "../store/actions/handleMainAccount"
 import { getMainAccountUserName } from "../store/actions/handleAccounts"
 import { useNavigate } from "react-router-dom"
 import Header from "../components/Header"
+import { Link } from "react-router-dom"
 import "../style/AccountSetting.scss"
 const AccountSetting = () => {
 
@@ -12,6 +13,8 @@ const AccountSetting = () => {
     const realName = useSelector(state => state.accountsReducer.realName)
     const localId = useSelector(state => state.authReducer.localId)
     const stateBio = useSelector(state => state.mainAccountReducer.bio)
+    const profilePhoto = useSelector(state => state.photoReducer.profilePhoto)
+
     
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -53,8 +56,14 @@ const AccountSetting = () => {
             <Header/>
             <div className="mainSettingContainer">
                 <div className="user">
-                    <img height="50px" width="50px" src={me} alt="" />
-                    <h1>{userName}</h1>
+                { profilePhoto ? <img height="50px" width="50px" src={profilePhoto} alt="" /> : <img height="50px" width="50px" src={anonimo} alt="" />}
+                    <div className="userData">
+                        <h1>{userName}</h1>
+                        <Link className="linkChangeImg" to="/profilePhoto">
+                            <p>Cambia l'immagine del profilo</p>
+                        </Link>
+                    </div>
+                    
                 </div>
                 <form onSubmit={changeData}>
                     <div className="nameContainer">

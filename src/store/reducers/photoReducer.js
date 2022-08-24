@@ -5,7 +5,8 @@ const initialState = {
     error:false,
     photosData:[],
     userPhotoList:[],
-    userPhotoPost:null    
+    userPhotoPost:null, 
+    profilePhoto:null 
 }
 
 const reducer = (state = initialState,action) => {
@@ -46,6 +47,24 @@ const reducer = (state = initialState,action) => {
                 loading:false,
                 error:action.error
             }
+        case(actionTypes).UPLOAD_PROFILE_PHOTO_START:
+            return{
+                ...state,
+                loading:true
+            }
+        case(actionTypes).UPLOAD_PROFILE_PHOTO_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                error:false,
+                profilePhoto:action.profilePhoto
+            }
+        case(actionTypes).UPLOAD_PROFILE_PHOTO_FAIL:
+            return{
+                ...state,
+                loading:false,
+                error:action.error
+            }
         case(actionTypes).GET_PHOTO_START:
             return{
                 ...state,
@@ -60,6 +79,24 @@ const reducer = (state = initialState,action) => {
                 userPhotoPost:null
             }
         case(actionTypes).GET_PHOTO_FAIL:
+            return{
+                ...state,
+                loading:false,
+                error:action.error
+            }
+        case(actionTypes).GET_PROFILE_PHOTO_START:
+            return{
+                ...state,
+                loading:true
+            }
+        case(actionTypes).GET_PROFILE_PHOTO_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                error:false,
+                profilePhoto:action.profilePhoto
+            }
+        case(actionTypes).GET_PROFILE_PHOTO_FAIL:
             return{
                 ...state,
                 loading:false,

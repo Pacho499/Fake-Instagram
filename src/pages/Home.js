@@ -9,7 +9,7 @@ import { getRandomPhotos } from "../store/actions/handlePhoto"
 import HomePosts from "../components/HomePosts"
 import UserSingleHomePost from "../components/UserSingleHomePost"
 import { getMainAccountData } from "../store/actions/handleMainAccount"
-import {getPhoto} from "../store/actions/handlePhoto"
+import {getProfilePhoto} from "../store/actions/handlePhoto"
 const Home = () => {
     
     const dispatch = useDispatch()
@@ -18,7 +18,6 @@ const Home = () => {
     const realName = useSelector(state => state.accountsReducer.realName)
     const userName = useSelector(state => state.accountsReducer.userName)
     const userPhotoPost = useSelector( state => state.photoReducer.userPhotoPost)
-
     //rivedere ma siamo sulla strada giusta
     useEffect(() => {
         dispatch(getRandomAccounts())
@@ -26,6 +25,7 @@ const Home = () => {
         dispatch(getRandomSuggestedAccounts())
         dispatch(getMainAccountUserName(localId))
         dispatch(getMainAccountData(localId))
+        dispatch(getProfilePhoto(localId))
     },[])
 
     return(

@@ -3,10 +3,7 @@ import home from "../images/home.png"
 import send from "../images/send.png"
 import heart from "../images/heart.png"
 import add from "../images/add.png"
-import me from "../images/me.jpg"
-import heartFill from "../images/heart-fill.png"
-import sendFill from "../images/send-fill.png"
-import addFill from "../images/add-fill.png"
+import anonimo from "../images/anonimo.webp"
 import homeFill from "../images/home-fill.png"
 import "../style/Header.scss"
 import { Link } from "react-router-dom"
@@ -18,6 +15,7 @@ const Header = ({}) => {
 
     const dispatch = useDispatch()
     const userName = useSelector(state => state.accountsReducer.userName)
+    const profilePhoto = useSelector(state => state.photoReducer.profilePhoto)
     const [viewOptions, setViewOptions] = useState(false)
 
     const viewControl = () => {
@@ -73,7 +71,11 @@ const Header = ({}) => {
                 
                 
                 <img height="24px" src={heart} alt="" />
-                <button onClick={viewControl}><img style={{borderRadius:"20px"}} width="24px" height="24px"src={me} alt="" /></button> 
+                { profilePhoto ? 
+                    <button onClick={viewControl}><img style={{borderRadius:"20px"}} width="24px" height="24px"src={profilePhoto} alt="" /></button> 
+                    : 
+                    <button onClick={viewControl}><img style={{borderRadius:"20px"}} width="24px" height="24px"src={anonimo} alt="" /></button> 
+                } 
                 {viewOptions ? renderNav() : null}
             </div>
         </div>

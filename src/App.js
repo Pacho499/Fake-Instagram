@@ -8,7 +8,8 @@ import { authCheck } from "./store/actions/handleAuth";
 import Direct from "./pages/Direct";
 import Account from "./pages/Account";
 import AccountSetting from "./pages/AccountSettings";
-import UploadImmage from "./pages/UploadImage";
+import UploadImage from "./pages/UploadImage";
+import UploadProfileImage from "./pages/UploadProfileImage";
 function App() {
 
   const token = useSelector(state=> state.authReducer.token)
@@ -26,7 +27,8 @@ function App() {
         <Route exact path="/Direct" element={<Direct/>}/>
         <Route exact path="/:userName" element={<Account/>}/>
         <Route exact path="/:userName/settings" element={<AccountSetting/>}/>
-        <Route exact path="/newPost" element={<UploadImmage/>}/>
+        <Route exact path="/newPost" element={<UploadImage/>}/>
+        <Route exact path="/ProfilePhoto" element={<UploadProfileImage/>}/>
       </Routes>
       
     </div>
