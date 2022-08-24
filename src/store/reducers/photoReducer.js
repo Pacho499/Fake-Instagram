@@ -68,7 +68,6 @@ const reducer = (state = initialState,action) => {
         case(actionTypes).GET_PHOTO_START:
             return{
                 ...state,
-                loading:true
             }
         case(actionTypes).GET_PHOTO_SUCCESS:
             return{

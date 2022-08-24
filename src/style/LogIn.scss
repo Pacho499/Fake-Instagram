@@ -12,11 +12,13 @@ body{
         margin-right: 40px;
         .background{
             position: relative;
+            top: 300px;
         }
        .loginImg{
-            position: absolute;
-            left: 210px;
-            bottom: 110px;          
+            position: relative;
+            bottom: 260px;
+            left: 140px
+                      
         }
     }
     .rightContainer{
@@ -44,6 +46,9 @@ body{
             }
             .logIn{
                 @include buttonAuth
+            }
+            .error{
+                color: red;
             }
             
         }

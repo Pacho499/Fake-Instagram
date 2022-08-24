@@ -16,6 +16,7 @@ const SignUp = () => {
 
     
     const token = useSelector(state => state.authReducer.token)
+    const error = useSelector (state => state.authReducer.error)
 
     useEffect (() => {
         changeSignInColor()
@@ -88,6 +89,7 @@ const SignUp = () => {
                 <MyLabel style={{right:"105px"}}  text="Password"/>
                 <MyInput type={view ? "Password" : "text"} value={password} handleChange={handlePassword}/>
                 <button onClick={changeInputType} className="changeInputType">Mostra</button>
+                {error ? <p style={{color:'red'}}>E-mail già presente</p> : null }
                 <p>Le persone che usano i nostri servizi potrebbero aver caricato le tue informazioni di contatto su Instagram. <span>Scopri di più</span></p>
                 <p>Iscrivendoti, accetti le nostre <span>Condizioni.</span>  Scopri in che modo raccogliamo, usiamo e condividiamo i tuoi dati nella nostra <span>Informativa sulla privacy</span>  e in che modo usiamo cookie e tecnologie simili nella nostra <span>Normativa sui cookie.</span> </p>
                 <button 

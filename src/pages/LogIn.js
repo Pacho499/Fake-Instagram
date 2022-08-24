@@ -7,6 +7,7 @@ import MyLabel from "../components/MyLabel"
 import {Link, Navigate} from "react-router-dom"
 import {useDispatch, useSelector} from 'react-redux'
 import {logIn} from "../store/actions/handleAuth"
+import loginImg from "../images/login.png"
 const LogIn = () => {
     //bisgona animare il login
     const [password,setPassword] = useState("")
@@ -61,9 +62,7 @@ const LogIn = () => {
             {shouldRedirect}
             <div className="leftContainer">
                 <img className="background" src={background} alt="logo" height="580px" />
-                <div className="Slide">
-                    
-                </div>
+                <img className="loginImg" src={loginImg} alt="login" height="500px" />
                 
             </div>
             <div className="rightContainer">
@@ -78,7 +77,7 @@ const LogIn = () => {
                             <MyLabel style={{right:"105px"}} text="Password"/>
                             <MyInput autoComplete="password" handleChange={handlePassword} value={password} type={view ? "password" : "text"}/>
                             <button  onClick={changeInputType} className="changeInputType">Mostra</button>
-                            { error ? <p stlye={{color:"red"}}>E-mail o password errati!</p> : null }
+                            { error ? <p className="error">E-mail o password errati!</p> : null }
                         </div>
                         <button onClick={handleLogIn} style={canLogIn ? {backgroundColor:"#0095f6"}:{backgroundColor:"#c0dffd" }} className="logIn">Accedi</button>
                     </form>
