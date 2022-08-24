@@ -1,4 +1,5 @@
 @import "utils.scss";
+@import "./mediaQueries.scss";
 .newPostContainer{
     @include flexColumn;
     position: relative;
@@ -8,6 +9,9 @@
     padding: 100px;
     margin: auto;
     border: 1px solid $borderColor;
+    @include tablet{
+        width: 90%;
+    }
     .files{
         margin-top: 50px;
         @include flexColumn;

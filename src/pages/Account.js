@@ -57,7 +57,7 @@ const Account = () => {
                         
                     </div>
                     <div className="numbers">
-                        <p>Post: <span>{userPhotoList.length}</span></p>
+                        <p>Post: <span className="post">{userPhotoList.length}</span></p>
                         <p><span>297</span> follower</p>
                         <p><span>131</span> profili seguiti</p>
                     </div>

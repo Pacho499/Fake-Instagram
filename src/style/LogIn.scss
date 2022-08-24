@@ -1,4 +1,5 @@
 @import './utils.scss';
+@import "./mediaQueries.scss";
 body{
     background-color: $backgroundPrimaryColor;
 }
@@ -19,6 +20,9 @@ body{
             bottom: 260px;
             left: 140px
                       
+        }
+        @include tablet{
+            display: none
         }
     }
     .rightContainer{

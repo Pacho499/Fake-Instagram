@@ -1,14 +1,30 @@
 @import "utils.scss";
-
+@import "mediaQueries.scss";
 .bioContainer{
     @include flex;
     position: relative;
     top: 120px;
+    @include smartphone{
+        top: 60px;
+    }
     .profilePhoto{
         img{
             border-radius: 100px;
             margin-right: 80px;
+            @include tablet{
+                margin: 0 10px;
+                
+            }
+            @include smartphone{
+                height: 60px;
+                width: 60px;
+                position: relative;
+                top: 100px;
+                left: 80px;
+            }
+            
         }
+        
 
         
     }
@@ -20,6 +36,17 @@
                 font-size: 28px;
                 font-weight: 400;
                 margin-right: 30px;
+                @include tablet{
+                    font-size: 16px;
+                    font-weight: 600;
+                    position: relative;
+                    top: 150px;
+                    right: 150px;
+                }
+                @include smartphone{
+                    right: -10px;
+                    top: 100px;
+                }
             }
             button{
                 font-size: 14px;
@@ -28,6 +55,12 @@
                 background-color: $backgroundPrimaryColor;
                 border: 1px solid $borderColor;
                 border-radius: 4px;
+                @include tablet{
+                    position: relative;
+                    top: 210px;
+                    right: 100px;
+                    width: 400px;
+                }
             }
             display: flex;
             margin-bottom: 20px;
@@ -36,14 +69,40 @@
             display: flex;
             margin-bottom: 12px;
             
+            
             p{
                 margin-right: 30px;
+                @include tablet{
+                    font-size: 16px;
+                    position: relative;
+                    left: 30px;
+                }
                 span{
                     font-weight: 600;
+                    @include tablet{
+                        font-size: 20px;
+                        position: relative;
+                        bottom: 30px;
+                        left: 60px;
+                    }
+                    
+                }
+                .post{
+                    @include tablet{
+                        position: relative;
+                        left: -40px;
+                    }
                 }
             }
         }
         .mainBio{
+            @include smartphone{
+                position: relative;
+                top: 50px;
+                left:80px;
+                width: 300px;
+                font-size: 12px;
+            }
             h2{
                 font-size: 16px;
             }
@@ -57,11 +116,22 @@
 .photoContainer{
     position: relative;
     top: 200px;
-    display: grid;
-    width: 70%;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    width: 90%;
     margin: auto;
-    grid-template-columns: 1fr 1fr 1fr;
+    @include tablet{
+        margin-top: 50px;
+    }
+    @include smartphone{
+        top: 130px;
+    }
     img{
         margin: 10px 10px;
+        @include tablet{
+            height: 200px;
+            width: 200px;
+        }
     }
 }

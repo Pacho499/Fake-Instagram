@@ -1,5 +1,5 @@
 @import "utils.scss";
-
+@import "mediaQueries.scss";
 .mainSettingContainer{
     @include flexColumn;
     align-items: left;
@@ -9,6 +9,10 @@
     border: 1px solid $borderColor;
     position: relative;
     top: 100px;
+    @include tablet{
+        width: 90%;
+    }
+
     .user{
         display: flex;
         padding-top: 20px;

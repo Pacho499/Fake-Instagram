@@ -1,4 +1,5 @@
 @import './utils.scss';
+@import "./mediaQueries.scss";
 .mainDiv{
     z-index: 2;
     position: fixed;
@@ -11,12 +12,14 @@
     border-bottom: 1px solid $borderColor;
     .logoDiv{
         margin-left: 90px;
+        @include smartphone{
+            margin-left: 40px;
+        }
     }
 
     .inputDiv{
         input{
            position: relative;
-           left: 40px;
            width: 260px;
            padding: 10px 20px;
            border-radius: 4px;
@@ -24,6 +27,13 @@
            background-color: #EFEFEF;
            &:focus{
             outline: none
+        }
+
+        @include tablet{
+            width: 100px;
+        }
+        @include smartphone{
+            display: none;
         }
         }
     }
