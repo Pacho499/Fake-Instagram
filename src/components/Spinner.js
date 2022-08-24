@@ -1,18 +1,7 @@
-import "../style/spinner.scss"
+import style from "../style/spinner.module.css"
 const Spinner = () => {
     return(
-        <div style={{display:"flex", justifyContent:"center"}}>
-
-            <div className="lds-spinner">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-
-        </div>
-            
+        <div className={style.loader}>Loading...</div>
         )
 }
 export default Spinner

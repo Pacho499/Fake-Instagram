@@ -11,6 +11,7 @@ const UPLOAD_PHOTO_FAIL = "UPLOAD_PHOTO_FAIL"
 const GET_PHOTO_START = "GET_PHOTO_START"
 const GET_PHOTO_SUCCESS = "GET_PHOTO_SUCCESS"
 const GET_PHOTO_FAIL = "GET_PHOTO_FAIL"
+const UPLOAD_PHOTO_IN_HOME = "UPLOAD_PHOTO_IN_HOME"
 
 export const getRandomPhotos = () => {
     return async dispatch => {
@@ -62,6 +63,7 @@ export const uploadPhoto = (storage,imageUpload,localId,userPhotoList) => {
             [...userPhotoList,url]
             )
             dispatch(uploadPhotoSuccess(url))
+            dispatch(uploadPhotoInHome(url))
         } catch (error) {
             console.log(error)
             dispatch(uploadPhotoFail(error))
@@ -79,6 +81,13 @@ export const uploadPhotoStart = () => {
 export const uploadPhotoSuccess = (url) => {
     return {
         type: UPLOAD_PHOTO_SUCCESS,
+        url:url
+    }
+}
+
+export const uploadPhotoInHome = (url) => {
+    return{
+        type: UPLOAD_PHOTO_IN_HOME,
         url:url
     }
 }
@@ -138,5 +147,6 @@ export {
     UPLOAD_PHOTO_FAIL,
     GET_PHOTO_START,
     GET_PHOTO_SUCCESS,
-    GET_PHOTO_FAIL
+    GET_PHOTO_FAIL,
+    UPLOAD_PHOTO_IN_HOME
 }

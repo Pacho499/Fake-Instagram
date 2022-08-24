@@ -1,7 +1,22 @@
+@import "utils.scss";
 .newPostContainer{
-    display: flex;
-    justify-content: center;
+    @include flexColumn;
     position: relative;
-    top: 200px;
+    top: 100px;
+    background-color: $backgroundSecondaryColor;
+    width: 50%;
+    padding: 100px;
+    margin: auto;
+    border: 1px solid $borderColor;
+    .files{
+        margin-top: 50px;
+        @include flexColumn;
+        button{
+            
+            @include buttonAuth;
+            margin-top: 40px;
+            background-color: $onButtonColor;
+        }
+    }
 }
 

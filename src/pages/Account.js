@@ -1,11 +1,12 @@
 import me from "../images/me.jpg"
 import Header from "../components/Header"
 import "../style/Account.scss"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import {getMainAccountData} from "../store/actions/handleMainAccount"
 import {getPhoto} from "../store/actions/handlePhoto"
 import { useDispatch, useSelector } from "react-redux"
 import {Link} from "react-router-dom"
+import Spinner from "../components/Spinner"
 const Account = () => {
 
 
@@ -22,7 +23,7 @@ const Account = () => {
 
     
     const renderPhoto = () => {
-       if (userPhotoList.length < 0) {
+       if (userPhotoList === null) {
            return
        }else{
            userPhotoList.reverse()

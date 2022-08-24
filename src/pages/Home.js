@@ -7,7 +7,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { getMainAccountUserName, getRandomAccounts, getRandomSuggestedAccounts } from "../store/actions/handleAccounts"
 import { getRandomPhotos } from "../store/actions/handlePhoto"
 import HomePosts from "../components/HomePosts"
+import UserSingleHomePost from "../components/UserSingleHomePost"
 import { getMainAccountData } from "../store/actions/handleMainAccount"
+import {getPhoto} from "../store/actions/handlePhoto"
 const Home = () => {
     
     const dispatch = useDispatch()
@@ -15,6 +17,7 @@ const Home = () => {
     const localId = useSelector(state=> state.authReducer.localId)
     const realName = useSelector(state => state.accountsReducer.realName)
     const userName = useSelector(state => state.accountsReducer.userName)
+    const userPhotoPost = useSelector( state => state.photoReducer.userPhotoPost)
 
     //rivedere ma siamo sulla strada giusta
     useEffect(() => {
@@ -30,6 +33,7 @@ const Home = () => {
             <Header/>
             <div className="mainPost">
                 <div className="post">
+                    { userPhotoPost ? <UserSingleHomePost/> : null  }
                     {loading ? <Spinner/>  : <HomePosts/> }
                 </div>
                 <div className="accounts">

@@ -4,7 +4,8 @@ const initialState = {
     loading:false,
     error:false,
     photosData:[],
-    userPhotoList:[],    
+    userPhotoList:[],
+    userPhotoPost:null    
 }
 
 const reducer = (state = initialState,action) => {
@@ -55,13 +56,19 @@ const reducer = (state = initialState,action) => {
                 ...state,
                 loading:false,
                 error:false,
-                userPhotoList:action.data
+                userPhotoList:action.data,
+                userPhotoPost:null
             }
         case(actionTypes).GET_PHOTO_FAIL:
             return{
                 ...state,
                 loading:false,
                 error:action.error
+            }
+        case(actionTypes).UPLOAD_PHOTO_IN_HOME:
+            return{
+                ...state,
+                userPhotoPost:action.url
             }
         default :
             return state
