@@ -10,6 +10,9 @@ import Account from "./pages/Account";
 import AccountSetting from "./pages/AccountSettings";
 import UploadImage from "./pages/UploadImage";
 import UploadProfileImage from "./pages/UploadProfileImage";
+import { getMainAccountData } from "./store/actions/handleMainAccount";
+import { getProfilePhoto, getPhoto } from "./store/actions/handlePhoto";
+import { getMainAccountUserName } from "./store/actions/handleAccounts";
 function App() {
 
   const token = useSelector(state=> state.authReducer.token)
@@ -17,6 +20,9 @@ function App() {
 
   useEffect(() => {
     dispatch(authCheck())
+    dispatch(getMainAccountData())
+    dispatch(getProfilePhoto())
+    dispatch(getMainAccountUserName())
   }, [])
   return (
     <div className="App">

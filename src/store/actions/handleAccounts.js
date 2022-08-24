@@ -88,9 +88,10 @@ export const getRandomSuggestedAccountsFail = (error) => {
         error: error
     }
 }
-export const getMainAccountUserName = (localId) => {
+export const getMainAccountUserName = () => {
     return async dispatch => {
         dispatch(getMainAccountUserNameStart())
+        const localId = localStorage.getItem("userId")
         try {
             const response = await Axios.get(`https://reactfinal-36831-default-rtdb.europe-west1.firebasedatabase.app/account/${localId}/data.json`)
             const data = await response.data

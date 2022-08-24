@@ -23,9 +23,9 @@ const Home = () => {
          dispatch(getRandomAccounts())
          dispatch(getRandomPhotos())
          dispatch(getRandomSuggestedAccounts())
-         dispatch(getMainAccountUserName(localId))
-         dispatch(getMainAccountData(localId))
-         dispatch(getProfilePhoto(localId))
+         dispatch(getMainAccountUserName())
+         dispatch(getMainAccountData())
+         dispatch(getProfilePhoto())
     },[])
 
     return(

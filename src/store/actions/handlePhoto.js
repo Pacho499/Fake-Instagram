@@ -143,9 +143,10 @@ export const uploadProfilePhotoFail = (error) => {
     }
 }
 
-export const getProfilePhoto = (localId) => {
+export const getProfilePhoto = () => {
     return async dispatch => {
         dispatch(getProfilePhotoStart())
+        const localId = localStorage.getItem("userId")
         try {
             const response = await Axios.get(`https://reactfinal-36831-default-rtdb.europe-west1.firebasedatabase.app/account/${localId}/profilePhoto.json`)
             const data = response.data
@@ -178,9 +179,10 @@ export const getProfilePhotoFail = (error) => {
         error: error
     }
 }
-export const getPhoto = (localId) => {
+export const getPhoto = () => {
     return async dispatch => {
         dispatch(getPhotoStart())
+        const localId = localStorage.getItem("userId")
         try {
             const response = await Axios.get(`https://reactfinal-36831-default-rtdb.europe-west1.firebasedatabase.app/account/${localId}/photo.json`)
             const data = response.data

@@ -3,7 +3,7 @@ import Header from "../components/Header"
 import "../style/Account.scss"
 import { useEffect, useState } from "react"
 import {getMainAccountData} from "../store/actions/handleMainAccount"
-import {getPhoto} from "../store/actions/handlePhoto"
+import {getPhoto, getProfilePhoto} from "../store/actions/handlePhoto"
 import { useDispatch, useSelector } from "react-redux"
 import {Link} from "react-router-dom"
 import Spinner from "../components/Spinner"
@@ -18,7 +18,6 @@ const Account = () => {
     const localId = useSelector(state => state.authReducer.localId)
     const bio = useSelector(state => state.mainAccountReducer.bio)
     useEffect(() => {
-        dispatch(getMainAccountData(localId))
         dispatch(getPhoto(localId))
     },[])
 
