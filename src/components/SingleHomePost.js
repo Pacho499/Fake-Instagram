@@ -5,10 +5,11 @@ import comment from "../images/comment.png"
 import save from "../images/save.png"
 import "../style/HomePost.scss"
 import { useState } from "react"
+import { useSelector } from "react-redux"
 const SingleHomePost = ({username,name,profilePhoto,immage}) => {
     
     const [like,setLike] = useState(false)
-
+    const userProfilePhoto = useSelector(state => state.photoReducer.profilePhoto)
     const sendLike = () => {
         setLike(!like)
     }
@@ -31,7 +32,7 @@ const SingleHomePost = ({username,name,profilePhoto,immage}) => {
                     <img id="save" height="24px" src={save} alt="" />
                 </div>
                 <div className="like">
-                    <img width="20px" height="20px" src={profilePhoto} alt="" />
+                    {like ?  <img width="20px" height="20px" src={userProfilePhoto} alt="" /> : <img width="20px" height="20px" src={profilePhoto} alt=""/> }
                     {like ?<p>piace a te, {name} e altri</p>  : <p>piace a {name} e altri</p> }
                 </div>
                 

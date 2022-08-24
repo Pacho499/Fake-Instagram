@@ -8,15 +8,16 @@ import { useNavigate } from "react-router-dom"
 const UploadImmage = () => {
 
     const localId = useSelector(state => state.authReducer.localId)
-    const userPhotoList = useSelector(state => state.photoReducer.userPhotoList)
     const loading = useSelector (state => state.photoReducer.loading)
+    const userName = useSelector (state => state.mainAccountReducer.userName)
     const error = useSelector (state => state.photoReducer.error)
     const [imageUpload, setImmageUpload] = useState(null)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const upload = async () => {
-        await dispatch(uploadProfilePhoto(storage,imageUpload,localId,userPhotoList))
+        await dispatch(uploadProfilePhoto(storage,imageUpload,localId))
+        await navigate(`/${userName}`)
     }
     
     

@@ -104,7 +104,7 @@ export const uploadPhotoFail = (error) => {
         error: error
     }
 }
-export const uploadProfilePhoto = (storage,imageUpload,localId,userPhotoList) => {
+export const uploadProfilePhoto = (storage,imageUpload,localId) => {
     return async dispatch => {
         dispatch(uploadProfilePhotoStart())
         try {

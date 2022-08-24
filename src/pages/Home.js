@@ -20,12 +20,12 @@ const Home = () => {
     const userPhotoPost = useSelector( state => state.photoReducer.userPhotoPost)
     //rivedere ma siamo sulla strada giusta
     useEffect(() => {
-        dispatch(getRandomAccounts())
-        dispatch(getRandomPhotos())
-        dispatch(getRandomSuggestedAccounts())
-        dispatch(getMainAccountUserName(localId))
-        dispatch(getMainAccountData(localId))
-        dispatch(getProfilePhoto(localId))
+         dispatch(getRandomAccounts())
+         dispatch(getRandomPhotos())
+         dispatch(getRandomSuggestedAccounts())
+         dispatch(getMainAccountUserName(localId))
+         dispatch(getMainAccountData(localId))
+         dispatch(getProfilePhoto(localId))
     },[])
 
     return(
