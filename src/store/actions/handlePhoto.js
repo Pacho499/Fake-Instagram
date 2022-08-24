@@ -150,7 +150,6 @@ export const getProfilePhoto = () => {
         try {
             const response = await Axios.get(`https://reactfinal-36831-default-rtdb.europe-west1.firebasedatabase.app/account/${localId}/profilePhoto.json`)
             const data = response.data
-            console.log(data)
             dispatch(getProfilePhotoSuccess(data))
         } catch (error) {
             console.log(error)
@@ -187,7 +186,12 @@ export const getPhoto = () => {
             const response = await Axios.get(`https://reactfinal-36831-default-rtdb.europe-west1.firebasedatabase.app/account/${localId}/photo.json`)
             const data = response.data
             console.log(data)
-            dispatch(getPhotoSuccess(data))
+            if (data === null){
+                return
+            }else{
+                dispatch(getPhotoSuccess(data))
+            }
+            
         } catch (error) {
             console.log(error)
             dispatch(getPhotoFail(error))

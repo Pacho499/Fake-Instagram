@@ -23,16 +23,14 @@ const Account = () => {
 
     
     const renderPhoto = () => {
-       if (userPhotoList === null) {
-           return
-       }else{
+        
            userPhotoList.reverse()
            return userPhotoList.map((url,index) => {
                return(
                    <img height="300px" width="300px" key={index} src={url} alt="" />
                )
            })
-       }
+       
     }
 
     const renderProfilePhoto = () => {
@@ -72,7 +70,7 @@ const Account = () => {
             </div>
     
             <div className="photoContainer">
-                {renderPhoto()}
+                {userPhotoList ? renderPhoto() : null }
             </div>
         </div>
         
